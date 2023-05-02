@@ -54,6 +54,18 @@ def calculate_vaporizer_concentration(position, vaporizer_position, vaporizer_ra
     total_concentration = final_concentration + initial_concentration
     return total_concentration
 
+#work in progress under
+concentration = np.zeros(5) #setting all the conc = 0
+concentration[0] = 100
+
+for i in range(1, 5):
+    print(i)
+    diffused_vaporizer = 0.50 * 20
+    print(diffused_vaporizer,"d")
+    new_concentration = concentration[i - 1] - diffused_vaporizer
+    print(new_concentration,"n")
+    if new_concentration < 0:
+        new_concentration = 0
 
 
 
