@@ -1,3 +1,15 @@
+"""
+IS 597 PR Spring 2023
+Project
+Title: Monte Carlo simulation of the effectiveness of vaporizers in killing mosquitoes
+Submitted by: Mousami Shinde
+Date: April 2023
+IDE: Pycharm 2022.3.1 Professional Edition
+Python version 3.10.11
+-------------------------------------------------------------
+This project is a Monte Carlo simulation that studies how vaporizers are effective in killing mosquitoes.
+"""
+
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,6 +18,16 @@ import math
 
 
 def mosquito_count(min_count, max_count):
+    """
+
+    :param min_count:
+    :param max_count:
+    :return:
+
+    >>> random.seed(111)
+    >>> mosquito_count(20,50)
+    25
+    """
     return random.randint(min_count, max_count)
 
 
@@ -19,7 +41,7 @@ def generate_mosquito_position(room_width, room_height, room_breadth):
 
 
 
-def generate_nearby_position(position, max_distance=0.1):
+def generate_nearby_position(position, max_distance=random.randint(0,2)):
     x, y,z = position
     new_x = x + random.uniform(-max_distance, max_distance)
     new_y = y + random.uniform(-max_distance, max_distance)
@@ -33,8 +55,7 @@ def generate_vaporizer_position(room_width, room_height):
     return [x, y, 0]
 
 
-#ceiling_fan_on = 0.05
-#ceiling_fan_off = 0.01
+
 # def calculate_vaporizer_concentration(position, vaporizer_position, vaporizer_rate, time_passed,
 #                                       initial_concentration):
 #     distance = math.sqrt((position[0] - vaporizer_position[0]) ** 2 + (position[1] - vaporizer_position[1]) ** 2 +(position[2] - vaporizer_position[2]) ** 2) #using distance
@@ -93,25 +114,50 @@ def calculate_concentration_sections(time_passed, section):
             concentration = 10 + (time_passed-4)*10
     return concentration
 
+def main_simulation_function(room_width, room_height, room_breadth, time):
+    num = mosquito_count(20, 50)
+    v = generate_vaporizer_position(room_width, room_height)
+    dead = 0
+    for j in range(num):
+        inhaled = 0
+        y0 = generate_mosquito_position(room_width, room_height, room_breadth)
+        for i in range(1, time):
+            f = generate_nearby_position(y0, 0.5)
+            y0 = f
+            sec = determine_sections(room_breadth, f)
+            vap = calculate_concentration_sections(i, sec)
+            inhaled += 0.01 * vap
+        if inhaled >= 40:
+            dead += 1
+    percentage_of_dead_m = dead * 100 / num
+    return percentage_of_dead_m
+
 
 
 if __name__ == "__main__":
-        num = mosquito_count(20,50)
         room_width = 10
-        room_height = 10
-        room_breadth = 10
-        v = generate_vaporizer_position(room_width,room_height)
-        dead = 0
-        for j in range(num):
-            inhaled = 0
+        room_height = 20
+        room_breadth = 15
+        list_of_percent_dead = list()
+        for i in range(500):
+            percent_dead_mosquito = main_simulation_function(room_width, room_height, room_breadth, 20)
+            list_of_percent_dead.append(percent_dead_mosquito)
+        print(np.average(list_of_percent_dead))
 
-            y0 = generate_mosquito_position(room_width, room_height, room_breadth)
-            for i in range(1,20):
-                f = generate_nearby_position(y0,0.5)
-                sec = determine_sections(room_breadth,f)
-                vap = calculate_concentration_sections(i,sec)
-                inhaled += 0.01 * vap
-            if inhaled >= 40:
-                dead += 1
-            percentage_of_dead_m = dead*100/num
-        print(percentage_of_dead_m)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
