@@ -17,39 +17,65 @@ import math
 
 
 
-def mosquito_count(min_count, max_count):
+def mosquito_count(min_count: int, max_count: int) -> int:
     """
-
-    :param min_count:
-    :param max_count:
-    :return:
+    This function randomly generates a mosquito count which is between the two numbers passed as arguments.
+    :param min_count: minimum number of mosquitoes
+    :param max_count: maximum number of mosquitoes
+    :return: a number that denotes the mosquito population
 
     >>> random.seed(111)
     >>> mosquito_count(20,50)
     25
+    >>> mosquito_count(100,200)
+    147
     """
     return random.randint(min_count, max_count)
 
 
 
-def generate_mosquito_position(room_width, room_height, room_breadth):
+def generate_mosquito_position(room_width: int, room_height: int, room_breadth: int) -> list:
+    """
+    This function randomly generates an initial position of a single mosquito within the bounds of the room
+    :param room_width: The width of the room
+    :param room_height: the height of the room
+    :param room_breadth: the breadth of the room
+    :return: a list containing the x, y and z coordinate of the mosquito
+    >>>random.seed(111)
+    generate_mosquito_position(11,10,11)
+    [5,6,2]
+    """
     x = random.uniform(0, room_width)
     y = random.uniform(0, room_height)
     z = random.uniform(0,room_breadth)
-    position = [x,y,z]
-    return position
+    return [x,y,z]
 
 
 
-def generate_nearby_position(position, max_distance=random.randint(0,2)):
-    x, y,z = position
+def generate_nearby_position(position: list, max_distance=random.randint(0,2)) -> list:
+    """
+    This function takes in the initial position of the mosquito, and generates the next position of the mosquito within the defined bounds
+    :param position: the existing position of the mosquito
+    :param max_distance: the maximum distance a mosquito can move at a time
+    :return: a list with the new coordinates
+    >>> random.seed(111)
+    >>> generate_nearby_position([2,4,5],0.5)
+    [2.4,3.7,5]
+    """
+    x, y, z = position
     new_x = x + random.uniform(-max_distance, max_distance)
     new_y = y + random.uniform(-max_distance, max_distance)
     new_z = z + random.uniform(-max_distance, max_distance)
     return [new_x, new_y, new_z]
 
 
-def generate_vaporizer_position(room_width, room_height):
+def generate_vaporizer_position(room_width: int, room_height: int) -> list:
+    """
+    This function randomly generates the vaporizer location on the wall. The location is on a 2D axis
+    :param room_width: width of the room
+    :param room_height: height of the room
+    :return: returns a list of coordinates
+    """
     x = random.uniform(0, room_width)
     y = random.uniform(0, room_height)
     return [x, y, 0]
@@ -71,6 +97,13 @@ def generate_vaporizer_position(room_width, room_height):
 
 
 def determine_sections(room_breadth, mosquito_position):
+    """
+    This function takes in the breadth of the room and divides it into 5 sections. The mosquito position is then run through this function
+    to get the section of the room at that point
+    :param room_breadth: breadth of the room
+    :param mosquito_position: mosquito position in a list
+    :return: the section the mosquito is in
+    """
     part = 0
     x = room_breadth/5
     if mosquito_position[2] <= x:
