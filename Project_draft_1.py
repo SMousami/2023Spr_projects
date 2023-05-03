@@ -96,6 +96,20 @@ def calculate_concentration_sections(time_passed, section):
             concentration = 10 + (time_passed-4)*10
     return concentration
 
+def determine_sections(room_breadth, mosquito_position):
+    x = room_breadth/5
+    if mosquito_position[2] <= x:
+        section = 1
+    elif mosquito_position[2] <= 2*x:
+        section = 2
+    elif mosquito_position[2] <= 3*x:
+        section = 3
+    elif mosquito_position[2] <= 4*x:
+        section = 4
+    elif mosquito_position[2] < 5*x:
+        section = 5
+    return section
+
 def calculate_vapor_inhaled(concentration, total_inhaled):
     amount_inhaled = 0.1 * concentration #10% for now, what if the mosquitoes are more or less resilient?
     total_inhaled += amount_inhaled
