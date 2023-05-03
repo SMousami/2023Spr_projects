@@ -67,7 +67,34 @@ for i in range(1, 5):
     if new_concentration < 0:
         new_concentration = 0
 
+def calculate_concentration_sections(time_passed, section):
+    concentration = int()
 
+    if time_passed == 0:
+        concentration[0] = 100
+    if section == 1:
+        concentration = 100 + 40*time_passed
+    elif section  == 2:
+        if time_passed == 0:
+            concentration = 0
+        else:
+            concentration = 60 + (time_passed-1)*20
+    elif section == 3:
+        if time_passed < 2:
+            concentration = 0
+        else:
+            concentration = 40 + (time_passed-2)*20
+    elif section == 4:
+        if time_passed < 3:
+            concentration = 0
+        else:
+            concentration = 20 + (time_passed-3)*10
+    elif section == 5:
+        if time_passed < 4:
+            concentration = 0
+        else:
+            concentration = 10 + (time_passed-4)*10
+    return concentration
 
 def calculate_vapor_inhaled(concentration, total_inhaled):
     amount_inhaled = 0.1 * concentration #10% for now, what if the mosquitoes are more or less resilient?
