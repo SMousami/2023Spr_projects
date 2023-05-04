@@ -78,7 +78,9 @@ def generate_vaporizer_position(room_width: int, room_height: int) -> list:
     """
     x = random.uniform(0, room_width)
     y = random.uniform(0, room_height)
-    return [x, y, 0]
+    z = random.choice([0,1])
+    return [x, y, z]
+print(generate_vaporizer_position(11,10))
 
 
 
@@ -176,21 +178,5 @@ if __name__ == "__main__":
             percent_dead_mosquito = main_simulation_function(room_width, room_height, room_breadth, 20)
             list_of_percent_dead.append(percent_dead_mosquito)
         print(np.average(list_of_percent_dead))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
