@@ -80,7 +80,6 @@ def generate_vaporizer_position(room_width: int, room_height: int) -> list:
     y = random.uniform(0, room_height)
     z = random.choice([0,1])
     return [x, y, z]
-print(generate_vaporizer_position(11,10))
 
 
 
