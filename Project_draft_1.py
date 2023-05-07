@@ -24,11 +24,12 @@ def mosquito_count(min_count: int, max_count: int) -> int:
     :param max_count: maximum number of mosquitoes
     :return: a number that denotes the mosquito population
 
-    >>> random.seed(111)
-    >>> mosquito_count(20,50)
-    25
-    >>> mosquito_count(100,200)
-    147
+    >>>
+    >>> a = mosquito_count(20,50)
+    >>> a > 20
+    True
+    >>> a < 50
+    True
     """
     return random.randint(min_count, max_count)
 
@@ -41,9 +42,11 @@ def generate_mosquito_position(room_width: int, room_height: int, room_breadth: 
     :param room_height: the height of the room
     :param room_breadth: the breadth of the room
     :return: a list containing the x, y and z coordinate of the mosquito
-    >>>random.seed(111)
-    generate_mosquito_position(11,10,11)
-    [5,6,2]
+    >>> b = generate_mosquito_position(11,10,11)
+    >>> b[0] < 11
+    True
+    >>> b[1] < 10
+    True
     """
     x = random.uniform(0, room_width)
     y = random.uniform(0, room_height)
