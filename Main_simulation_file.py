@@ -202,9 +202,13 @@ def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int
 
 
 if __name__ == "__main__":
-    import doctest
+    lista = list()
+    for i in range(1000):
+        lista.append(diffusion_and_mosquito_position(number_of_sections=10, time_intervals=180,vaporizer_locations=[0,1],fan_speed=0.1))
+    print(sum(lista)/1000)
 
-    doctest.testmod(verbose=True, optionflags=doctest.ELLIPSIS)
+
+
 
 
 
