@@ -196,18 +196,114 @@ def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int
             mosquito_concentrations[i], mosquito_status[i] = mosquito_inhalation(ingestion_coefficient, ingestion_threshold, room_concentration, mosquito_in_section[i],
                                                                                  mosquito_concentrations[i], mosquito_status[i])
             mosquito_in_section[i], mosquito_location[i] = generate_nearby_position(mosquito_location[i], number_of_sections, max_distance)
-    return sum(mosquito_status) / len(mosquito_status)
+    return (sum(mosquito_status) / len(mosquito_status))
 
 
 
 
 if __name__ == "__main__":
-    lista = list()
-    for i in range(1000):
-        lista.append(diffusion_and_mosquito_position(number_of_sections=10, time_intervals=180,vaporizer_locations=[0,1],fan_speed=0.1))
-    print(sum(lista)/1000)
+    import os
+    import time
+
+    print("--------------------------------------------------------------------")
+    print("THIS IS A SIMULATION DEMO FILE FOR VAPORIZER EFFECTIVENESS IN A ROOM")
+    print("--------------------------------------------------------------------")
+    print(
+        "Sample values that can be used for demo are size = 10, time = 180, location 1 = 0, location 2 = 9, fan speed = 0.3 ")
+    print("                                                                    ")
+
+    while True:
+        try:
+            size = int(input("Please enter size of 1D section of the room : "))
+            if size <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input must be a positive, non-zero integer. Please try again. ")
+
+    while True:
+        try:
+            t = int(input("Please enter minutes to run the vaporizer for : "))
+            if t <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input must be a positive, non-zero integer. Please try again.")
+
+    while True:
+        try:
+            vap_num = int(input("Please enter the number of vaporizers that will be placed in the room : "))
+            if vap_num <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input must be a positive, non-zero integer. Please try again.")
+
+    vap_list = []
+    for i in range(int(vap_num)):
+        while True:
+            try:
+                vaporizer_loc = int(input("Please enter the location to place the vaporiser " + str(int(i) + 1) + " (Between 0 and " + str(int(size) - 1) + " ) : "))
+                if vaporizer_loc > int(size)-1:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Input must be an integer between 0 and " + str(int(size) - 1) + ". Please try again.")
+        vap_list.append(int(vaporizer_loc))
+    while True:
+        try:
+            fan_speed = int(input("Please enter the fan speed between 0 to 5 : "))
+            if fan_speed < 0:
+                raise ValueError
+            elif fan_speed >= 6:
+                raise ValueError
+            break
+        except ValueError:
+            print("Fan knobs have only 5 speeds available. Choose between 0 to 5, with 0 being fan off.")
+
+    print("                                                                    ")
+    print("=====================================================")
+    print("...........Loading the results for 1 run.............")
+    print("=====================================================")
+    print("                                                                    ")
+    sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,fan_speed=float(fan_speed/10))
 
 
+    print("Survival rate of mosquitos at the end of the time period is " + str(round(sim, 2)))
+    print("                                                                    ")
+    selection = input("Do you want the average results and statistics over a specified amount of runs (y/n) ? : ")
+    print("                                                                    ")
+    if selection == 'y' or selection == 'Y':
+        no_runs = input("Please enter the number of runs : ")
+        print("                                                                    ")
+        print(
+            "Expect 29 seconds runtime for 1000 iterations on 12th Gen Intel(R) Core(TM) i7-1255U - 1.70 GHz 16 GB as benchmark")
+        print("                                                                    ")
+        print("=====================================================")
+        print("..................Loading Statistics.................")
+        print("=====================================================")
+
+        t0 = time.time()
+
+        results = []
+        for i in range(int(no_runs)):
+            sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,
+                                             fan_speed=float(fan_speed/10))
+
+            results.append(round(sim, 2))
+
+        runtime = time.time() - t0
+
+        max_value = max(results)
+        min_value = min(results)
+        mean_value = round(sum(results) / len(results), 2)
+        print("                                                                    ")
+        print("The maximum survival rate of mosquitos in " + str(no_runs) + " runs is " + str(max_value))
+        print("The minimum survival rate of mosquitos in " + str(no_runs) + " runs is " + str(min_value))
+        print("The mean survival rate of mosquitos in " + str(no_runs) + " runs is " + str(mean_value))
+        print("                                                                    ")
+        print("The simulation runtime for " + str(no_runs) + " iterations was " + str(round(runtime, 2)) + " seconds")
+        print("                                                                    ")
 
 
 
