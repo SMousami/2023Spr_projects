@@ -41,11 +41,11 @@ def generate_initial_mosquito_position(room_length: int):
     :param room_length: The length of the room
     :return: The x location of the mosquito and the section in which the mosquito is
     >>> b, c = generate_initial_mosquito_position(10)
-    >>> isintance(b, int)
+    >>> isinstance(b, int)
     True
     >>> c <= 10
     True
-    >>> c = 14
+    >>> c == 14
     False
     """
     initial_position_of_one_mosquito = random.uniform(0, room_length)
@@ -56,23 +56,24 @@ def generate_initial_mosquito_position(room_length: int):
 def generate_nearby_position(previous_position: int, room_length: int, max_distance: float):
     """
     This function takes in the initial position of the mosquito, and generates the next position of the mosquito within the defined bounds
-    :param position: the existing position of the mosquito
+    :param previous_position: the existing position of the mosquito
+    :param room_length: the length of the room
     :param max_distance: the maximum distance a mosquito can move at a time
     :return: the room section and new position
     >>> d, e = generate_nearby_position(2,10,0.9)
     >>> e <= 2.9
     True
-    >>> e>= 1.1
+    >>> e >= 1.1
     True
     >>> isinstance(d,int)
     True
     """
-    max_distance_randomized = random.randint(0, max_distance)
+    max_distance_randomized = random.uniform(0, max_distance)
 
     new_position = previous_position + random.uniform(-max_distance_randomized, max_distance_randomized)
 
     if new_position >= room_length:
-        new_position = new_position - random.uniform(new_position - room_length, max_distance_randomized)
+        new_position = new_position - random.uniform(new_position - (room_length-0.1), max_distance_randomized)
 
     elif new_position < 0:
         new_position = new_position + random.uniform(-new_position, max_distance_randomized)
@@ -82,16 +83,37 @@ def generate_nearby_position(previous_position: int, room_length: int, max_dista
     return section, new_position
 
 
-def mosquito_inhalation(ing_coeff, threshold, state, mosq_zone, mosq_conc, mosq_stat):
-    if mosq_conc < threshold:
+def mosquito_inhalation(inhalation_rate, inhalation_threshold, current_concentration, mosquito_zone, ingested_concentration, mosquito_status):
+    """
+    This function generates the concentration of chemicals absorbed by the mosquito and its current status as dead or alive.
+    :param inhalation_rate: rate of ingestion of the liquid vapours in the air by the mosquito
+    :param inhalation_threshold: the maximum ingestion a mosquito can have without dying, after which it will die
+    :param current_concentration: the current concentration at the position of the mosquito
+    :param mosquito_zone: the array with the section the mosquitoes are present in
+    :param ingested_concentration: the ingested concentration of the liquid vaporizer by the mosquito
+    :param mosquito_status: dead/alive status of mosquitoes with 0 representing death
+    :return: the concentration and the mosquito status
+    >>> f, h = mosquito_inhalation(0.02, 100, [80,70,60], 2, 10, 1)
+    >>> f == 11.2
+    True
+    >>> h == 1
+    True
+    >>> f2, h2 = mosquito_inhalation(0.02, 10, [80,70,60], 2, 10, 1)
+    >>> h2 == 1
+    False
+    >>> f2 == 11.2
+    False
+    """
 
-        mosq_conc = mosq_conc + state[mosq_zone] * ing_coeff
-        mosq_stat = 1
+    if ingested_concentration < inhalation_threshold:
+
+        ingested_concentration = ingested_concentration + current_concentration[mosquito_zone] * inhalation_rate
+        mosquito_status = 1
 
     else:
-        mosq_stat = 0
+        mosquito_status = 0
 
-    return mosq_conc, mosq_stat
+    return ingested_concentration, mosquito_status
 
 
 def simulation(size: int, time_intervals: int,
