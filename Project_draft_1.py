@@ -123,6 +123,21 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     :param min_mosquito_count: The minimum mosquito count
     :param max_mosquito_count: The maximum mosquito count
     :return: the room concentration, numbers of mosquitoes in the room,location array, section array, concentration array and status array for mosquitoes
+    >>> g, i, k, l, m, n = starting_point_data_structure(5,20,50)
+    >>> g
+    array([0., 0., 0., 0., 0.], dtype=float32)
+    >>> i in range(20,50)
+    True
+    >>> len(k) == i
+    True
+    >>> isinstance(k, numpy.ndarray)
+    True
+    >>> l[0] > 5
+    False
+    >>> n[0] == 1
+    True
+    >>> n #doctest: +ELLIPSIS
+    array([1, 1, ...
     """
     # initially, whole room has zero concentration, hence the below
     room_conc = np.zeros(shape=(number_of_sections,), dtype='float32')
@@ -209,6 +224,9 @@ def diffusion_and_mosquito_position(size: int, time_intervals: int,vaporizer_loc
 
 
 if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod(verbose=True, optionflags=doctest.ELLIPSIS)
     lista = list()
     for i in range(1000):
         k = simulation(size=10, time_intervals=180, vaporizer_locations=[0, 9], fan_speed=0)
