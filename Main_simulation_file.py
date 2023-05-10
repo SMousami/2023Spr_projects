@@ -251,32 +251,28 @@ if __name__ == "__main__":
         vap_list.append(int(vaporizer_loc))
     while True:
         try:
-            fan_speed = int(input("Please enter the fan speed between 0 to 5 : "))
+            fan_speed = float(input("Please enter the fan speed between 0 to 5 : "))
             if fan_speed < 0:
                 raise ValueError
             elif fan_speed >= 6:
                 raise ValueError
             break
         except ValueError:
-            print("Fan knobs have only 5 speeds available. Choose between 0 to 5, with 0 being fan off.")
-
+            print("Fans have only limited speeds available. Choose between 0 to 5, with 0 being fan off.")
     print("                                                                    ")
     print("=====================================================")
     print("...........Loading the results for 1 run.............")
     print("=====================================================")
     print("                                                                    ")
     sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,fan_speed=float(fan_speed/10))
-
-
-    print("Survival rate of mosquitos at the end of the time period is " + str(round(sim, 2)))
+    print("Survival rate of mosquitoes at the end of the time period is " + str(round(sim, 2)))
     print("                                                                    ")
     selection = input("Do you want the average results and statistics over a specified amount of runs (y/n) ? : ")
     print("                                                                    ")
     if selection == 'y' or selection == 'Y':
         no_runs = input("Please enter the number of runs : ")
         print("                                                                    ")
-        print(
-            "Expect 29 seconds runtime for 1000 iterations on 12th Gen Intel(R) Core(TM) i7-1255U - 1.70 GHz 16 GB as benchmark")
+        print("Expect 29 seconds runtime for 1000 iterations on 12th Gen Intel(R) Core(TM) i7-1255U - 1.70 GHz 16 GB as benchmark")
         print("                                                                    ")
         print("=====================================================")
         print("..................Loading Statistics.................")
@@ -286,20 +282,17 @@ if __name__ == "__main__":
 
         results = []
         for i in range(int(no_runs)):
-            sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,
-                                             fan_speed=float(fan_speed/10))
-
+            sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list, fan_speed=float(fan_speed/10))
             results.append(round(sim, 2))
 
         runtime = time.time() - t0
-
         max_value = max(results)
         min_value = min(results)
         mean_value = round(sum(results) / len(results), 2)
         print("                                                                    ")
-        print("The maximum survival rate of mosquitos in " + str(no_runs) + " runs is " + str(max_value))
-        print("The minimum survival rate of mosquitos in " + str(no_runs) + " runs is " + str(min_value))
-        print("The mean survival rate of mosquitos in " + str(no_runs) + " runs is " + str(mean_value))
+        print("The maximum survival rate of mosquitoes in " + str(no_runs) + " runs is " + str(max_value))
+        print("The minimum survival rate of mosquitoes in " + str(no_runs) + " runs is " + str(min_value))
+        print("The mean survival rate of mosquitoes in " + str(no_runs) + " runs is " + str(mean_value))
         print("                                                                    ")
         print("The simulation runtime for " + str(no_runs) + " iterations was " + str(round(runtime, 2)) + " seconds")
         print("                                                                    ")
