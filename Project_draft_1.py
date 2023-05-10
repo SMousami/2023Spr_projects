@@ -11,6 +11,8 @@ This project is a Monte Carlo simulation that studies how vaporizers are effecti
 """
 from dataclasses import dataclass
 import random
+
+import numpy
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -29,8 +31,8 @@ def mosquito_count(min_count: int, max_count: int) -> int:
     True
     >>> a < 50
     True
-    >>> isinstance(a,int)
-    True
+    >>> isinstance(a,float)
+    False
     """
     return random.randint(min_count, max_count)
 
@@ -83,7 +85,8 @@ def generate_nearby_position(previous_position: int, room_length: int, max_dista
     return section, new_position
 
 
-def mosquito_inhalation(inhalation_rate, inhalation_threshold, current_concentration, mosquito_zone, ingested_concentration, mosquito_status):
+def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, current_concentration: numpy.ndarray, mosquito_zone: int,
+                        ingested_concentration: float, mosquito_status: int):
     """
     This function generates the concentration of chemicals absorbed by the mosquito and its current status as dead or alive.
     :param inhalation_rate: rate of ingestion of the liquid vapours in the air by the mosquito
@@ -104,20 +107,45 @@ def mosquito_inhalation(inhalation_rate, inhalation_threshold, current_concentra
     >>> f2 == 11.2
     False
     """
-
     if ingested_concentration < inhalation_threshold:
-
         ingested_concentration = ingested_concentration + current_concentration[mosquito_zone] * inhalation_rate
         mosquito_status = 1
-
     else:
         mosquito_status = 0
 
     return ingested_concentration, mosquito_status
 
 
-def simulation(size: int, time_intervals: int,
-               vaporizer_locations: list = [0], emission_rate: float = 100,
+def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mosquito_count):
+    """
+    This function provides a starting np arrays for all the mosquito related information.
+    :param number_of_sections: The total number of sections in the room
+    :param min_mosquito_count: The minimum mosquito count
+    :param max_mosquito_count: The maximum mosquito count
+    :return: the room concentration, numbers of mosquitoes in the room,location array, section array, concentration array and status array for mosquitoes
+    """
+    # initially, whole room has zero concentration, hence the below
+    room_conc = np.zeros(shape=(number_of_sections,), dtype='float32')
+
+    # find the number of mosquitoes in the room
+    mosquito_count_in_room = mosquito_count(min_mosquito_count, max_mosquito_count)
+
+    # creating an array to track the location of mosquitoes at each point in time and initialize the location
+    mosquito_locations = np.zeros(shape=(mosquito_count_in_room,), dtype='float32')
+    mosquito_section = np.zeros(shape=(mosquito_count_in_room,), dtype='int')
+
+    # creating an array to track the concentration of chemicals ingested by each mosquito
+    mosquito_ingested_conc = np.zeros(shape=(mosquito_count_in_room,), dtype='float32')
+
+    # creating an array to track the status of the mosquito
+    mosquito_status = np.ones(shape=(mosquito_count_in_room,), dtype='int')
+
+    for i in range(0, mosquito_count_in_room):
+        mosquito_section[i], mosquito_locations[i] = generate_initial_mosquito_position(number_of_sections)
+
+    return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_status
+
+def diffusion_and_mosquito_position(size: int, time_intervals: int,vaporizer_locations: list = [0], emission_rate: float = 100,
                diffusion_rate=0.20, chemical_duration: int = 30,
                fan_speed: float = 0.0, max_distance: int = 2,
                min_count: int = 20, max_count: int = 50,
@@ -140,25 +168,9 @@ def simulation(size: int, time_intervals: int,
     """
     # array of regions in the room, assume rectangle
 
-    # initially, whole room has zero concentration
-    state = np.zeros(shape=(size,), dtype='float32')
-
-    # find the number of mosquitos in the room
-    mosq_count = mosquito_count(min_count, max_count)
-
-    # create an array to track the location of mosquitos at each point in time and initialize the location
-    mosq_loc = np.zeros(shape=(mosq_count,), dtype='float32')
-    mosq_zone = np.zeros(shape=(mosq_count,), dtype='int')
-
-    # create an array to track the concentration of chemicals ingested by each mosquito
-    mosq_conc = np.zeros(shape=(mosq_count,), dtype='float32')
-
-    # create an array to track the status of the mosquito
-    mosq_stat = np.ones(shape=(mosq_count,), dtype='float32')
-
-    for i in range(mosq_count):
-        mosq_zone[i], mosq_loc[i] = generate_initial_mosquito_position(size)
-
+    # array of regions in the room, assume rectangle
+    state, mosq_count, mosq_loc, mosq_zone, mosq_conc, mosq_stat = starting_point_data_structure(size, min_count,
+                                                                                                 max_count)
     for t in range(time_intervals):
 
         # add new chemical vapor from all vaporizers:
