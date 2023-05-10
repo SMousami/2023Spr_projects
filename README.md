@@ -1,9 +1,28 @@
 # Mosquitoes in a room 
 ## A monte carlo simulation of how to repell and kill mosquitoes in a room. 
 
+
 I have found myself in situations throughout my life where I was in a room full of mosquitoes, plotting ways to kill the most number of them in a shorter span of time. I draw inspiration from these moments in life to work on this project. 
 
 ![image](https://user-images.githubusercontent.com/40067673/235832902-11636d02-3c45-4221-acb0-ba2475735cf2.png)
+
+The Monte Carlo simulation aims to study in detail how effective vaporizers are in killing mosquitoes in an indoor room setting. 
+
+#Design
+
+The project replicates the working of diffusion of chemicals through the air in a room. 
+
+
+
+#Validation
+
+
+#Experiments
+
+#Assumptions
+
+#Hypothesis
+
 
 ### Setting
 
