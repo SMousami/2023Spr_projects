@@ -202,7 +202,6 @@ def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int
 
 
 if __name__ == "__main__":
-    import os
     import time
 
     print("--------------------------------------------------------------------")
