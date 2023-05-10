@@ -160,65 +160,46 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
 
     return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_status
 
-def diffusion_and_mosquito_position(size: int, time_intervals: int,vaporizer_locations: list = [0], emission_rate: float = 100,
-               diffusion_rate=0.20, chemical_duration: int = 30,
-               fan_speed: float = 0.0, max_distance: int = 2,
-               min_count: int = 20, max_count: int = 50,
-               ingest_coeff: float = 0.001, threshold: int = 100):
+def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int,vaporizer_locations: list = [0], emission_rate: float = 100, diffusion_rate=0.20,
+                                    chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2,min_count: int = 20, max_count: int = 50,
+                                    ingestion_coefficient: float = 0.001, ingestion_threshold: int = 100) -> float:
     """
-
-    :param size: number of zones in room/size of the room (each zone is 1 unit measurement)
+    :param: number_of_sections: number of zones in room/size of the room (each zone is 1 unit measurement)
     :param time_intervals: number of intervals (in minutes) to simulate
     :param vaporizer_locations: which zones have emitters
     :param emission_rate: how much vapor is released per time interval
     :param diffusion_rate: air distribution rate caused by circulation
-    :param chemical_duration: number of minutes the chemical remains effective
+    :param chemical_effective_duration: number of minutes the chemical remains effective
     :param fan_speed: air distribution rate caused by a fan
     :param max_distance: maximum distance that can be travelled by a mosquito in unit time
     :param min_count: mininum count of mosquitos
     :param max_count: maximum count of mosquitos
-    :param ingest_coeff: fraction of concentration that mosquitos can absorb
-    :param threshold: value of chemicals at which mosquitos die
-    :return:
+    :param ingestion_coefficient: fraction of concentration that mosquitos can absorb
+    :param ingestion_threshold: value of chemicals at which mosquitos die
+    :return: A value of survival rate
+    >>> p = diffusion_and_mosquito_position(number_of_sections=10, time_intervals=180,vaporizer_locations=[0,1],fan_speed=0.1)
+    >>> isinstance(p, float)
+    True
+    >>> p <= 1
+    True
     """
-    # array of regions in the room, assume rectangle
-
-    # array of regions in the room, assume rectangle
-    state, mosq_count, mosq_loc, mosq_zone, mosq_conc, mosq_stat = starting_point_data_structure(size, min_count,
-                                                                                                 max_count)
+    room_concentration, mosquito_counts, mosquito_location, mosquito_in_section, mosquito_concentrations, mosquito_status = starting_point_data_structure(number_of_sections, min_count, max_count)
     for t in range(time_intervals):
-
-        # add new chemical vapor from all vaporizers:
-        for v in vaporizer_locations:
-            state[v] += emission_rate
-
-        for region in range(size - 1):
-            difference = state[region] - state[region + 1]
+        room_concentration[vaporizer_locations] += emission_rate
+        for section in range(number_of_sections - 1):
+            difference = room_concentration[section] - room_concentration[section + 1]
             flow = difference * (diffusion_rate + fan_speed)
-            state[region] -= flow
-            state[region + 1] += flow
-
-            # remove chemicals that have expired:
-            # remove a randomized portion approximately equal to emission_rate
-            # that is based on the
-            # proportion of ALL chemicals that are in this region
-
-        if t > chemical_duration:
-            weights = state / sum(state)
+            room_concentration[section] -= flow
+            room_concentration[section + 1] += flow
+        if t > chemical_effective_duration:
+            weights = room_concentration / sum(room_concentration)
             expiry = emission_rate * len(vaporizer_locations) * weights * random.uniform(0.9, 1.1)
-            state = state - expiry
-
-        # update each mosquito's position & ingested chemicals
-
-        for i in range(mosq_count):
-            # amount of chemical ingested at the current location
-            mosq_conc[i], mosq_stat[i] = mosquito_inhalation(ingest_coeff, threshold, state, mosq_zone[i], mosq_conc[i],
-                                                             mosq_stat[i])
-
-            # update the location of the mosquito
-            mosq_zone[i], mosq_loc[i] = generate_nearby_position(mosq_loc[i], size, max_distance)
-
-    return sum(mosq_stat) / len(mosq_stat)
+            room_concentration = room_concentration - expiry
+        for i in range(0,mosquito_counts):
+            mosquito_concentrations[i], mosquito_status[i] = mosquito_inhalation(ingestion_coefficient, ingestion_threshold, room_concentration, mosquito_in_section[i],
+                                                                                 mosquito_concentrations[i], mosquito_status[i])
+            mosquito_in_section[i], mosquito_location[i] = generate_nearby_position(mosquito_location[i], number_of_sections, max_distance)
+    return sum(mosquito_status) / len(mosquito_status)
 
 
 
@@ -227,11 +208,7 @@ if __name__ == "__main__":
     import doctest
 
     doctest.testmod(verbose=True, optionflags=doctest.ELLIPSIS)
-    lista = list()
-    for i in range(1000):
-        k = simulation(size=10, time_intervals=180, vaporizer_locations=[0, 9], fan_speed=0)
-        lista.append(k)
-    print(sum(lista) / 1000)
+
 
 
 
