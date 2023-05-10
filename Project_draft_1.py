@@ -23,12 +23,13 @@ def mosquito_count(min_count: int, max_count: int) -> int:
     :param min_count: minimum number of mosquitoes
     :param max_count: maximum number of mosquitoes
     :return: a number that denotes the mosquito population
-
     >>>
     >>> a = mosquito_count(20,50)
     >>> a > 20
     True
     >>> a < 50
+    True
+    >>> isinstance(a,int)
     True
     """
     return random.randint(min_count, max_count)
@@ -37,38 +38,48 @@ def mosquito_count(min_count: int, max_count: int) -> int:
 def generate_initial_mosquito_position(room_length: int):
     """
     This function randomly generates an initial position of a single mosquito within the bounds of the room
-    :param room_width: The width of the room
-    :param room_height: the height of the room
-    :param room_breadth: the breadth of the room
-    :return: The x location of the mosquito
+    :param room_length: The length of the room
+    :return: The x location of the mosquito and the section in which the mosquito is
+    >>> b, c = generate_initial_mosquito_position(10)
+    >>> isintance(b, int)
+    True
+    >>> c <= 10
+    True
+    >>> c = 14
+    False
     """
-    x = random.uniform(0, room_length)
-    zone = math.floor(x)
-    return zone,x
+    initial_position_of_one_mosquito = random.uniform(0, room_length)
+    section_of_the_position = math.floor(initial_position_of_one_mosquito)
+    return section_of_the_position, initial_position_of_one_mosquito
 
 
-def generate_nearby_position(position, room_length, max_distance):
+def generate_nearby_position(previous_position: int, room_length: int, max_distance: float):
     """
     This function takes in the initial position of the mosquito, and generates the next position of the mosquito within the defined bounds
     :param position: the existing position of the mosquito
     :param max_distance: the maximum distance a mosquito can move at a time
-    :return: a new x coordinate
-
+    :return: the room section and new position
+    >>> d, e = generate_nearby_position(2,10,0.9)
+    >>> e <= 2.9
+    True
+    >>> e>= 1.1
+    True
+    >>> isinstance(d,int)
+    True
     """
-    x = position
-    max_distance1 = random.randint(0, max_distance)
+    max_distance_randomized = random.randint(0, max_distance)
 
-    new_x = x + random.uniform(-max_distance1, max_distance1)
+    new_position = previous_position + random.uniform(-max_distance_randomized, max_distance_randomized)
 
-    if new_x >= room_length:
-        new_x = new_x - random.uniform(new_x - room_length, max_distance1)
+    if new_position >= room_length:
+        new_position = new_position - random.uniform(new_position - room_length, max_distance_randomized)
 
-    elif new_x < 0:
-        new_x = new_x + random.uniform(-new_x, max_distance1)
+    elif new_position < 0:
+        new_position = new_position + random.uniform(-new_position, max_distance_randomized)
 
-    zone = math.floor(new_x)
+    section = math.floor(new_position)
 
-    return zone, new_x
+    return section, new_position
 
 
 def mosquito_inhalation(ing_coeff, threshold, state, mosq_zone, mosq_conc, mosq_stat):
