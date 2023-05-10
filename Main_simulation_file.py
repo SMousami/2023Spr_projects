@@ -9,14 +9,11 @@ Python version 3.10.11
 -------------------------------------------------------------
 This project is a Monte Carlo simulation that studies how vaporizers are effective in killing mosquitoes.
 """
-from dataclasses import dataclass
-import random
 
-import numpy
+import random
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-import pandas as pd
 
 
 def mosquito_count(min_count: int, max_count: int) -> int:
