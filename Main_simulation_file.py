@@ -82,7 +82,7 @@ def generate_nearby_position(previous_position: int, room_length: int, max_dista
     return section, new_position
 
 
-def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, current_concentration: numpy.ndarray, mosquito_zone: int,
+def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, current_concentration: np.ndarray, mosquito_zone: int,
                         ingested_concentration: float, mosquito_status: int):
     """
     This function generates the concentration of chemicals absorbed by the mosquito and its current status as dead or alive.
@@ -127,7 +127,7 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     True
     >>> len(k) == i
     True
-    >>> isinstance(k, numpy.ndarray)
+    >>> isinstance(k, np.ndarray)
     True
     >>> l[0] > 5
     False
