@@ -30,9 +30,9 @@ The setting is that of an indoor room. The room is divided into sections along i
 
 ## Validation
 
-To validate the design, the following study was used to understand what the results should be in a room of dimensions 7 * 5 * 4. The study had gotten a knockout rate of 56.7% with an interal of 7.3%. The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. 
+To validate the design, the following study was used to understand what the results should be in a room of dimensions 7 * 5 * 4. The study had gotten a knockout rate of 56.7% with an interal of 7.3%. The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. Note: The below figure shows the survival rate, which is 1 - knockout rate. Hence the average knockout rate should be around 57 % knockout rate. 
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/350d6a63-575c-44ca-9df3-439b40c15c65)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
 
 
