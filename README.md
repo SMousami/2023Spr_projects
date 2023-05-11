@@ -59,23 +59,25 @@ Assumptions:
 2) There will be only one vaporizer in the corner most section of the room.
 3) The experiment will run for 180 minute
 4) The diffusion rate of the vaporizer is 0.2 units per minute. 
-5) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. Assuming a 8 (L) * 6 (W)* 10 (H), we can consider two orientations: 
+5) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. 
+
+How assumption 5 will work:
+Assuming a 8 (L) * 6 (W)* 10 (H), we can consider two orientations: 
   a) 8 sections where the vaporizer is place on the shorter side (6 width wall) 
   b) 6 sections where the vaporizer is placed on the longer wall (8 length wall)
 In case a), the diffuser emits to a volume of 6 * 1 * 1 in each section (8 sections), in case b), the vaporizer emits to a volume of 8 * 1 * 1 in 6 sections. 
 The adjusted concentrations in section a) will be normalized to a factor of 1/6 and 1/8 for section b).
-Taking this into account, our normalized emission rates for each section is :
-  a) 8 sections > 100 (baseline)
-  b) 6 sections > 100*6/8 = 75
+Taking this into account, our normalized emission rates for a) 8 sections is 100 (baseline) and b) 6 sections is 100*6/8 = 75
   
-  Size = 6, average survival rate = 72%
+  Room Size = 6, average survival rate = 72%
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Size = 8, avergate survival rate = 67%
+  Room Size = 8, avergate survival rate = 67%
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/409af999-1612-4565-9732-7e24f98fbcc8)
 
+The survival rates are within 5% of each other's mean value for both the orientation. The histograms however have almost similar frequencies of survival rate. Based on this, I think the hypothesis that orientation matters is wrong.  
 
 
 
