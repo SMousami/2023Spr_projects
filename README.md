@@ -76,7 +76,7 @@ Taking this into account, our normalized emission rates for a) 8 sections is 100
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Room Size = 8, avergate survival rate = 68%
+  Room Size = 8, average survival rate = 68%
  
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ceadace0-312d-413e-9834-f00166d7893e)
 
@@ -93,11 +93,11 @@ Assumptions:
 
 ##### Scene 1: Two vaporizers at either end of the room
 
-Fan speed = 0, averge survival rate = 46%
+Fan speed = 0, average survival rate = 46%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/67d969b1-8265-4a1f-8f13-0de1a6b1e5c7)
 
-Fan Speed = 0.1, averge survival rate = 43%
+Fan Speed = 0.1, average survival rate = 43%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/6583354a-fad9-471c-826b-3e9f732ecfcc)
 
@@ -105,7 +105,7 @@ Fan Speed = 0.2, average Survival rate = 42%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/22459e78-a731-4f75-af03-db40d8d01528)
 
-Fan Speed = 0.3, averge survival rate = 39%
+Fan Speed = 0.3, average survival rate = 39%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/7aa0f73c-61f6-4725-bf84-74b0522758a4)
 
