@@ -6,6 +6,8 @@ Submitted by: Mousami Shinde
 Date: April 2023
 IDE: Pycharm 2022.3.1 Professional Edition
 Python version 3.10.11
+File: Design
+Purpose: This file is for the design of the simulation
 -------------------------------------------------------------
 This project is a Monte Carlo simulation that studies how vaporizers are effective in killing mosquitoes.
 """
@@ -157,8 +159,8 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_statuses
 
 
-def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = [0], emission_rate: float = 100, diffusion_rate: float = 0.30,
-                                    chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2, min_count: int = 20, max_count: int = 60,
+def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = None, emission_rate: float = 100, diffusion_rate: float = 0.30,
+                                    chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2, min_count: int = 20, max_count: int = 50,
                                     ingestion_coefficient: float = 0.001, ingestion_threshold: int = 50) -> float:
     """
     :param number_of_sections: number of zones in room/size of the room (each zone is 1 unit measurement)
@@ -272,7 +274,7 @@ if __name__ == "__main__":
     if selection == 'y' or selection == 'Y':
         no_runs = input("Please enter the number of runs : ")
         print("                                                                    ")
-        print("Expect 29 seconds runtime for 1000 iterations on 12th Gen Intel(R) Core(TM) i7-1255U - 1.70 GHz 16 GB as benchmark")
+        print("Expect 35 seconds runtime for 1000 iterations on 12th Gen Intel(R) Core(TM) i7-1255U - 1.70 GHz 16 GB as benchmark")
         print("                                                                    ")
         print("=====================================================")
         print("..................Loading Statistics.................")
