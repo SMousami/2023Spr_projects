@@ -122,33 +122,7 @@ The top best vaporizer positions are:
 37% for position 3 and 9
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/eb7f3d3f-1e1d-495e-8bf8-0d7b07b18e49)
 
-
-#Hypothesis
-
-
-### Setting
-
-The experiment will see how effective vaporizers are in killing mosquitoes. 
-
-### Parameters
-
-1) Number of mosquitoes : randomly generated
-2) Room orientation and size
-3) mosquito positions and movement
-4) Diffusion of vaporizer through the room
-
-## Hypothesis
-
-1) The orientation of the room matters for the vaporizer to be effective. The vaporizer works better in a square room instead of a rectangular room. 
-2) The presence of a ceiling fan in the room will increase the diffusion rate of vaporizer and improve its effectiveness in killing mosquitoes.
-
-## Monte Carlo simulation
-
-Any experiment with a monte carlo simulation has three phases
-
-1) Designing a simulation
-2) Validating the simulation
-3) Experiments and predictions
+Conclusion: Positions closer to each other and one position in the middle seems to be much effective at having a lower surivival rate. 
 
 ## References
 
