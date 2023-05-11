@@ -27,6 +27,20 @@ These mosquitoes are spread through out the room and their initial position is a
 #### Setting
 The setting is that of an indoor room. The room is divided into sections along it's length. The vaporizer can be present in any of these sections and emits a steady flow of vapours into the air. The vapours diffuse through the air throughout the rooms. For the sake of simplicity, the room's sections have the same concentration in every point of the section. The vapours also loose their effectiveness after 30 mins of being in the air. 
 
+Variables
+
+1) Time_intervals: the runtime of one simulation in minutes
+2) vaporizer_location: A list of sections in which the vaporizer is plugged in
+3) Emission_rate: how many units of vapour is the vaporizer emitting per minute
+4) diffusion_rate: The flow of vapours from one section to the next per minute
+5) chemical_duration: The effectiveness duration of the vapours
+6) fan_speed: speed assigned for the fan on a scale of 0 to 0.5 with 0 denoting the fan is turned off
+7) max_distance: the maximum distance a mosquito can travel
+8) min_count: minimum possible number of mosquitoes
+9) max_count: maximum possible number of mosquitoes
+10) ingest_coefficient: the amount the mosquito inhales in a minute
+11) threshold: the amount the mosquito can inhale without harming itself
+
 
 ## Validation
 
