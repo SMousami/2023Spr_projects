@@ -63,41 +63,29 @@ Assumptions:
 
 Fan speed = 0, averge survival rate =
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/384a612e-1a16-4487-9ca0-bda4c7c4f936)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/67d969b1-8265-4a1f-8f13-0de1a6b1e5c7)
 
-Fan Speed = 0.1, averge survival rate =
+Fan Speed = 0.1, averge survival rate = 43%
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/e210d40d-de92-45c5-becf-422dc7e1a189)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/6583354a-fad9-471c-826b-3e9f732ecfcc)
 
 Fan Speed = 0.2, average Survival rate = 42%
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/46acd5be-385a-49b1-b2fc-958ab5d1df60)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/22459e78-a731-4f75-af03-db40d8d01528)
 
-Fan Speed = 0.3, averge survival rate = 40%
+Fan Speed = 0.3, averge survival rate = 39%
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ccae01e8-163b-4350-a617-6442c656782d)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/7aa0f73c-61f6-4725-bf84-74b0522758a4)
 
-Fan speed = 0.4, average survival rate = 38%
+Fan speed = 0.4, average survival rate = 39%
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/fad73874-c0fb-4849-84a2-04af1faad689)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/dcc3eb53-acce-42b7-a64e-8133d30bf002)
 
-Fan Speed = 0.5, average survival rate = 39%
+Fan Speed = 0.5, average survival rate = 38%
 
-##### Scene 2: With one vaporizer
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/29616961-f57e-412b-9163-80f000ae0a2a)
 
-Fan Speed = 0,average survival rate = 97%
-
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/7603da07-c3f3-4575-86ea-2473cebaaaa6)
-
-Fan Speed = 0.1, average survival rate = 100
-
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/bf52b6a8-31a3-4e1e-9d48-5170b35f8ac4)
-
-Fan Speed = 0.2, average survival rate = 100
-
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/2b4a137c-72e6-4b9f-9a30-005c533c8c95)
-
-##### Conclusion: A room with two vaporizers show a decreasing rate of survival as the fan speed increases, proving the hypothesis right. 
+Conclusion: Fan speed decreases the survival rate at first, but then normalizes as the fan speed reaches the top speed. 
 
 #### Hypothesis 3: 
 #Assumptions
