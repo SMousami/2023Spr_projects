@@ -41,7 +41,7 @@ To validate the settings of the research above, having a mosquito threshold leve
 #### Hypothesis 1: The orientation of the room has an effect on the vaporizer. 
 
 Assumptions: 
-1) Fan speed will be kept at a minimum speed of 0.3 (0 is the lowest and 0.5 is highest)
+1) Fan speed will be kept at a minimum speed of 0 (0 is the lowest and 0.5 is highest)
 2) There will be only one vaporizer in the corner most section of the room.
 3) The experiment will run for 180 minute
 4) The diffusion rate of the vaporizer is 0.2 units per minute. 
@@ -54,7 +54,7 @@ Taking this into account, our normalized emission rates for each section is :
   a) 8 sections > 100 (baseline)
   b) 6 sections > 100*6/8 = 75
   
-  Size = 6, average survival rate = 
+  Size = 6, average survival rate = 72%
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
