@@ -6,6 +6,7 @@ Mosquitoes are small, flying insects that can cause significant harm to humans a
 In countries like India, there are many companies which advertize and sell machines that release vapours in the air to kill mosquitoes. They claim these liquid vaporizers to be an effective way of killing mosquitoes in an indoor settings. 
 
 ![[Source: Amazon.in]](https://github.com/SMousami/2023Spr_projects/assets/40067673/1f9dc5fa-49ce-4deb-8f49-2fcca7d367f1)
+Image: A commonly advertized mosquito vaporizer from a famous brand. Source: Amazon.in
 
 In India, the number of people who contract one of the diseases transmitted through mosquitoes runs in millions annually. Personally, I have found myself in a room full of mosquitoes, and really hoped that the vaporizer machine would work as it says. This project is one such work to understand the working of the vaporizer and if it would actually be beneficial. The Monte Carlo simulation utilized in the project aims to study in detail how effective vaporizers are in killing mosquitoes in an indoor room setting. 
 
