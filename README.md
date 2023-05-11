@@ -1,14 +1,14 @@
 # Mosquito Vaporizers: Buy or Pass? 
 ## A Monte Carlo Simulation of Mosquito Vaporizer effectiveness in a room full of mosquitoes. 
 
-Mosquitoes are small, flying insects that can cause significant harm to humans and animals. They are known to carry and transmit various diseases, such as malaria, dengue fever, and Zika virus, which can be life-threatening. Mosquito bites can also cause itching, swelling, and irritation, leading to discomfort and potential infection. In addition to their impact on human health, mosquitoes can also harm the environment by disrupting food chains and ecosystems. Despite efforts to control their populations through measures such as insecticide spraying and removing standing water sources, mosquitoes remain a persistent problem in many parts of the world.
+Mosquitoes are small, flying insects that can cause significant harm to humans and animals. They are known to carry and transmit various diseases, such as malaria, dengue fever, and Zika virus, which can be life-threatening. Mosquito bites can also cause itching, swelling, and irritation, leading to discomfort and potential infection. In addition to their impact on human health, mosquitoes can also harm the environment by disrupting food chains and ecosystems. Despite efforts to control their populations through measures such as insecticide spraying and removing standing water sources, mosquitoes remain a persistent problem in many parts of the world. (2)
 
 In countries like India, there are many companies which advertize and sell machines that release vapours in the air to kill mosquitoes. They claim these liquid vaporizers to be an effective way of killing mosquitoes in an indoor settings. 
 
 ![[Source: Amazon.in]](https://github.com/SMousami/2023Spr_projects/assets/40067673/1f9dc5fa-49ce-4deb-8f49-2fcca7d367f1)
 Image: A commonly advertized mosquito vaporizer from a famous brand. Source: Amazon.in
 
-In India, the number of people who contract one of the diseases transmitted through mosquitoes runs in millions annually. Personally, I have found myself in a room full of mosquitoes, and really hoped that the vaporizer machine would work as it says. This project is one such work to understand the working of the vaporizer and if it would actually be beneficial. The Monte Carlo simulation utilized in the project aims to study in detail how effective vaporizers are in killing mosquitoes in an indoor room setting. 
+In India, the number of people who contract one of the diseases transmitted through mosquitoes runs annually in millions. Personally, I have often found myself in a room full of mosquitoes, and really prayed that the vaporizer machine would work as it claims. This project is one such work to understand the working of the vaporizer and if it would actually be beneficial. The Monte Carlo simulation utilized in the project aims to study in detail how effective vaporizers are in killing mosquitoes in an indoor room setting. 
 
 # Information about the project files
 
@@ -38,7 +38,31 @@ To validate the design, the following study was used to understand what the resu
 
 #### Hypothesis 1: The orientation of the room has an effect on the vaporizer. 
 
-Keeping everything else same, this experiment will involve 
+Keeping everything else same, this experiment will involve looking at a square and rectangular orientation. 
+
+Assuming that the rectangular room has dimensions of 8 * 6 * 11 and the square has dimensions of 6 * 6 * 11 units. Since the experiment looks at section along the length, the experiment will run twice. In the first experiment run, the length will be taken as 8 and for the second, the length will be taken as 6. This means that the vaporizer will disperse the vapours along the length.
+
+Assumptions: 
+1) Fan speed will be kept at a minimum speed of 1 (0 is the lowest)
+2) There will be only one vaporizer in the corner most section of the room.
+3) The experiment will run for minute
+4) The diffusion rate of the vaporizer is 0.2 units per minute.  
+
+
+#### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
+
+Assumptions: 
+1) The length of the room is 8 units
+2) The fan speed will be vaired for each experiment run
+3) There will be only one vaporizer present at the corner section of the room. 
+4) The time interval for the simulations will be 180 min
+
+
+When fan speed is the lowest i.e. speed = 0 and time spent = 3 hours
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/01e5ab0e-f210-4035-af4b-e4914008df0a)
+
+
 
 #Assumptions
 
