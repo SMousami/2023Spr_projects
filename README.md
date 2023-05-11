@@ -25,7 +25,7 @@ A random number of mosquito is assumed to exist in the room for every simulation
 These mosquitoes are spread through out the room and their initial position is also randomly determined. All the mosquitoes are randomly moved a distance (or not) such that they are not in the same position throughout the simulation run. The mosquitoes inhale the vapours that the vaporizer emits, and their position in the room determines how much vapours they have inhaled at any point of time. The mosquitoes have a threshold of inhalation of the vapours, after which they die due to having too much vapours in their system. 
 
 #### Setting
-The setting is that of an indoor room. The room is divided into sections along it's length. The vaporizer can be present in any of these sections and emits a steady flow of vapours into the air. The vapours diffuse through the air throughout the rooms. For the sake of simplicity, the room's sections have the same concentration in every point of the section. The vapours also loose their effectiveness after 30 mins of being in the air. 
+The setting is that of an indoor room. The room is divided into sections along it's length. The vaporizer can be present in any of these sections and emits a steady flow of vapours into the air. The vapours diffuse through the air throughout the rooms. For the sake of simplicity, within each section the concentration is assumed to be uniform. The vapours also loose their effectiveness after 30 mins of being in the air. 
 
 Variables
 
@@ -48,7 +48,7 @@ To validate the design, the following study was used to understand what the resu
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
-To validate the settings of the research above, having a mosquito threshold level of 70 units made sense. However for the sake of further experiments and demonstrations of results, the mosquito inhalation threshold will be set at 100, as 70 threshold is too low to conduct meaningful experiments before all the mosquitoes die.
+To validate the settings of the research above, having a mosquito threshold level of 70 units made sense. However for the sake of further experiments and demonstrations of results, the mosquito inhalation threshold will be set at 100, as 70 threshold will lead to very high knockout rates when considering more than 1 vaporizer.
 
 ## Experiments
 
