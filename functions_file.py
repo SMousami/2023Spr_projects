@@ -175,5 +175,3 @@ class VaporizerSimulation:
             if iteration == 5:
                 break
             plt.show()
-
-
