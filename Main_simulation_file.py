@@ -3,7 +3,7 @@ IS 597 PR Spring 2023
 Project
 Title: Monte Carlo simulation of the effectiveness of vaporizers in killing mosquitoes
 Submitted by: Mousami Shinde
-Date: April 2023
+Date: May 10, 2023
 IDE: Pycharm 2022.3.1 Professional Edition
 Python version 3.10.11
 File: Design
@@ -256,7 +256,7 @@ if __name__ == "__main__":
             fan_speed_no = float(input("Please enter the fan speed between 0 to 5 : "))
             if fan_speed_no < 0:
                 raise ValueError
-            elif fan_speed_no >= 6:
+            elif fan_speed_no > 5:
                 raise ValueError
             break
         except ValueError:
