@@ -121,10 +121,11 @@ Conclusion: Fan speed decreases the survival rate at first, however as the fan s
 
 #### Hypothesis 3: The best vaporizer position would be when it is kept at the either ends of the room. 
 
-Assumptions
+Assumptions:
+
 1) The size of the room is 10
 2) The time interval of the experiment would be 180 minutes
-3) fan speed is kept at the middle
+3) Fan speed is kept at the middle (0.3) speed.
 
 The top best vaporizer positions are:
 
