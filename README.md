@@ -1,5 +1,5 @@
-# Mosquitoes in a room 
-## A Monte Carlo Simulation of mosquito vaporizer and a room full of mosquitoes. 
+# Mosquito Vaporizers: Buy or Pass? 
+## A Monte Carlo Simulation of Mosquito Vaporizer effectiveness in a room full of mosquitoes. 
 
 Mosquitoes are small, flying insects that can cause significant harm to humans and animals. They are known to carry and transmit various diseases, such as malaria, dengue fever, and Zika virus, which can be life-threatening. Mosquito bites can also cause itching, swelling, and irritation, leading to discomfort and potential infection. In addition to their impact on human health, mosquitoes can also harm the environment by disrupting food chains and ecosystems. Despite efforts to control their populations through measures such as insecticide spraying and removing standing water sources, mosquitoes remain a persistent problem in many parts of the world.
 
