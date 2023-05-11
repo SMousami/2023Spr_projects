@@ -11,14 +11,15 @@ This project is a Monte Carlo simulation that studies how vaporizers are effecti
 File: Experiment Results
 Purpose: To demonstrate the results
 """
+import functions_file as sim
 
-import functions_file as sim1
+#To run the class in which all the functions are stored:
+s = sim.VaporizerSimulation(size=10, time=180, vaporizer_locations=[0,9], fan_speed=0.3, threshold=100, emission_rate=100)
 
-s = sim1.VaporizerSimulation(size=6, time=180, vaporizer_locations=[0], fan_speed=0.3)
-
-
-s.validation_of_design(1000)
-
+#The first experiment will be conducted using the function experiment. Feel free to comment out the codes below as per usage.
+s.experiment(runs=100)
+#s.experiment_2(runs=100)
+#s.experiment_3(runs=100)
 
 
 

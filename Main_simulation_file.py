@@ -48,8 +48,8 @@ def generate_initial_mosquito_position(room_length: int):
     >>> c == 14
     False
     """
-    initial_position_of_one_mosquito = random.uniform(0, room_length)
-    section_of_the_position = math.floor(initial_position_of_one_mosquito)
+    initial_position_of_one_mosquito = random.uniform(0, room_length) #This is the original coordinate of the mosquito
+    section_of_the_position = math.floor(initial_position_of_one_mosquito) # This code looks at the position and finds which section of the room the mosquito is in
     return section_of_the_position, initial_position_of_one_mosquito
 
 
@@ -65,13 +65,14 @@ def generate_nearby_position(previous_position: int, room_length: int, max_dista
     True
     >>> e >= 1.1
     True
+    >>> isinstance(e,int)
+    False
     >>> isinstance(d,int)
     True
     """
-    max_distance_randomized = random.uniform(0, max_distance)
-
-    new_position = previous_position + random.uniform(-max_distance_randomized, max_distance_randomized)
-
+    max_distance_randomized = random.uniform(0, max_distance) # The distance the mosquito will move will be decided by randomizing between defined bounds
+    new_position = previous_position + random.uniform(-max_distance_randomized, max_distance_randomized) # The previous position is taken in and a randomized value is added/subtracted to it
+    #Below chunk of code makes sure that the calculated new position is not out of bounds of the room
     if new_position >= room_length:
         new_position = new_position - random.uniform(new_position - (room_length-0.1), max_distance_randomized)
 
@@ -110,7 +111,6 @@ def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, cur
         mosquitoes_status = 1
     else:
         mosquitoes_status = 0
-
     return ingested_concentration, mosquitoes_status
 
 
@@ -137,7 +137,7 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     >>> n #doctest: +ELLIPSIS
     array([1, 1, ...
     """
-    # initially, whole room has zero concentration, hence the below
+    # initially the whole room has 0 concentration
     room_conc = np.zeros(shape=(number_of_sections,), dtype='float32')
 
     # find the number of mosquitoes in the room
@@ -158,7 +158,7 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
 
     return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_statuses
 
-
+# Some part of the code below was developed by Professor Weible
 def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = None, emission_rate: float = 100, diffusion_rate: float = 0.20,
                                     chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2, min_count: int = 20, max_count: int = 50,
                                     ingestion_coefficient: float = 0.001, ingestion_threshold: int = 70) -> float:
@@ -185,11 +185,13 @@ def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int
     room_concentration, mosquito_counts, mosquito_location, mosquito_in_section, mosquito_concentrations, mosquito_status = starting_point_data_structure(number_of_sections, min_count, max_count)
     for t2 in range(time_intervals):
         room_concentration[vaporizer_locations] += emission_rate
+        #The below code will define what the concentration of each section at various time points is.
         for section in range(number_of_sections - 1):
             difference = room_concentration[section] - room_concentration[section + 1]
             flow = difference * (diffusion_rate + fan_speed)
             room_concentration[section] -= flow
             room_concentration[section + 1] += flow
+        #The below code factors in chemical expiration of the effectiveness of the vapours in the air
         if t2 > chemical_effective_duration:
             weights = room_concentration / sum(room_concentration)
             expiry = emission_rate * len(vaporizer_locations) * weights * random.uniform(0.9, 1.1)

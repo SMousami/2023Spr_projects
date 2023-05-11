@@ -3,7 +3,7 @@ IS 597 PR Spring 2023
 Project
 Title: Monte Carlo simulation of the effectiveness of vaporizers in killing mosquitoes
 Submitted by: Mousami Shinde
-Date: May 10, 2023
+Date: May 2023
 IDE: Pycharm 2022.3.1 Professional Edition
 Python version 3.10.11
 -------------------------------------------------------------
@@ -20,19 +20,19 @@ import matplotlib.pyplot as plt
 
 class VaporizerSimulation:
 
-    def __init__(self, size, time, vaporizer_locations, fan_speed):
+    def __init__(self, size, time, vaporizer_locations, fan_speed, threshold, emission_rate):
         self.size = size
         self.time_intervals = time
         self.vaporizer_locations = vaporizer_locations
-        self.emission_rate = 75
+        self.emission_rate = emission_rate
         self.diffusion_rate = 0.20
         self.chemical_duration = 30
         self.fan_speed = fan_speed
         self.max_distance = 2
         self.min_count = 20
         self.max_count = 50
-        self.ingest_coeff = 0.001
-        self.threshold = 70
+        self.ingest_coefficient = 0.001
+        self.threshold = threshold
         self.survival_rate = 0
 
     def mosquito_count(self):
@@ -62,29 +62,29 @@ class VaporizerSimulation:
 
         return zone, new_x
 
-    def mosquito_inhalation(self, state, mosq_zone, mosq_conc, mosq_stat):
+    def mosquito_inhalation(self, state, mosquito_zone, mosquito_conc, mosquito_stat):
 
-        if mosq_conc < self.threshold:
+        if mosquito_conc < self.threshold:
 
-            mosq_conc = mosq_conc + state[mosq_zone] * self.ingest_coeff
-            mosq_stat = 1
+            mosquito_conc = mosquito_conc + state[mosquito_zone] * self.ingest_coefficient
+            mosquito_stat = 1
 
         else:
-            mosq_stat = 0
+            mosquito_stat = 0
 
-        return mosq_conc, mosq_stat
+        return mosquito_conc, mosquito_stat
 
     def simulation(self):
 
         state = np.zeros(shape=(self.size,), dtype='float32')
-        mosq_count = self.mosquito_count()
-        mosq_loc = np.zeros(shape=(mosq_count,), dtype='float32')
-        mosq_zone = np.zeros(shape=(mosq_count,), dtype='int')
-        mosq_conc = np.zeros(shape=(mosq_count,), dtype='float32')
-        mosq_stat = np.ones(shape=(mosq_count,), dtype='float32')
+        mosquito_count = self.mosquito_count()
+        mosquito_loc = np.zeros(shape=(mosquito_count,), dtype='float32')
+        mosquito_zone = np.zeros(shape=(mosquito_count,), dtype='int')
+        mosquito_conc = np.zeros(shape=(mosquito_count,), dtype='float32')
+        mosquito_stat = np.ones(shape=(mosquito_count,), dtype='float32')
 
-        for i in range(mosq_count):
-            mosq_zone[i], mosq_loc[i] = self.generate_initial_mosquito_position()
+        for i in range(mosquito_count):
+            mosquito_zone[i], mosquito_loc[i] = self.generate_initial_mosquito_position()
 
         for t in range(self.time_intervals):
 
@@ -102,17 +102,17 @@ class VaporizerSimulation:
                 expiry = self.emission_rate * len(self.vaporizer_locations) * weights * random.uniform(0.9, 1.1)
                 state = state - expiry
 
-            for i in range(mosq_count):
+            for i in range(mosquito_count):
 
-                mosq_conc[i], mosq_stat[i] = self.mosquito_inhalation(state, mosq_zone[i], mosq_conc[i], mosq_stat[i])
+                mosquito_conc[i], mosquito_stat[i] = self.mosquito_inhalation(state, mosquito_zone[i], mosquito_conc[i], mosquito_stat[i])
 
-                mosq_zone[i], mosq_loc[i] = self.generate_nearby_position(mosq_loc[i])
+                mosquito_zone[i], mosquito_loc[i] = self.generate_nearby_position(mosquito_loc[i])
 
-        self.survival_rate = sum(mosq_stat) / len(mosq_stat)
+        self.survival_rate = sum(mosquito_stat) / len(mosquito_stat)
 
         return self.survival_rate
 
-    def validation_of_design(self, runs):
+    def experiment(self, runs):
 
         list_of_survival = []
         for i in range(runs):
@@ -170,7 +170,7 @@ class VaporizerSimulation:
             plt.hist(sorted_dict[i], bins=bins, alpha=0.5)
             plt.xticks(np.arange(min(sorted_dict[i]), max(sorted_dict[i]) + 0.05, 0.05))
             plt.title(
-                'Avg Survival is ' + str(round((sum(sorted_dict[i]) / runs), 2)) + ' in vapourizer position ' + str(i))
+                'Avg Survival is ' + str(round((sum(sorted_dict[i]) / runs), 2)) + ' in vaporizer position ' + str(i))
             iteration = iteration + 1
             if iteration == 5:
                 break
