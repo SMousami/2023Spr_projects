@@ -9,7 +9,7 @@ Python version 3.10.11
 -------------------------------------------------------------
 This project is a Monte Carlo simulation that studies how vaporizers are effective in killing mosquitoes.
 Purpose: Experimentation
-File: This file contains the functions necessary to run the experiments
+File: This file contains the functions necessary to run the experiments and will be imported to the experiments file
 """
 
 import math
@@ -112,7 +112,8 @@ class VaporizerSimulation:
 
         return self.survival_rate
 
-    def draw_histogram(self, incoming_list, simu_runs):
+    @staticmethod
+    def draw_histogram(incoming_list, simu_runs):
         bins = np.arange(min(incoming_list), max(incoming_list) + 0.05, 0.05)
         plt.figure(figsize=(12, 6))
         plt.hist(incoming_list, bins=bins, alpha=0.5)
@@ -127,7 +128,7 @@ class VaporizerSimulation:
         for i in range(runs):
             self.simulation()
             list_of_survival.append(self.survival_rate)
-        self.draw_histogram(incoming_list=list_of_survival, simu_runs = runs)
+        self.draw_histogram(incoming_list=list_of_survival, simu_runs=runs)
 
     def experiment_2(self, runs):
         fan_list = {}
@@ -137,7 +138,7 @@ class VaporizerSimulation:
                 self.simulation()
                 fan_list[speed].append(self.survival_rate)
         for i in fan_list:
-            self.draw_histogram(incoming_list=fan_list[i],simu_runs = runs)
+            self.draw_histogram(incoming_list=fan_list[i],simu_runs=runs)
 
     def experiment_3(self,runs):
         vap_list = {}
