@@ -110,12 +110,16 @@ Assumptions
 
 The top best vaporizer positions are:
 
+36% survival rate at position 2 and 4
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/60444230-4c7e-4140-bf0d-7bf81b1aaf41)
 
+36% survival rate at position 1 and 3
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/1f9d15b7-15df-464a-8709-c5d648260700)
 
+37% survival rate at position 0 and 5
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/70cfc574-51b2-4291-a990-3084ca9a682f)
 
+37% for position 3 and 9
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/eb7f3d3f-1e1d-495e-8bf8-0d7b07b18e49)
 
 
