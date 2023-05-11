@@ -1,5 +1,5 @@
 # Mosquitoes in a room 
-## A monte carlo simulation of how to repell and kill mosquitoes in a room. 
+## A Monte Carlo Simulation of mosquito vaporizer and a room full of mosquitoes. 
 
 Mosquitoes are small, flying insects that can cause significant harm to humans and animals. They are known to carry and transmit various diseases, such as malaria, dengue fever, and Zika virus, which can be life-threatening. Mosquito bites can also cause itching, swelling, and irritation, leading to discomfort and potential infection. In addition to their impact on human health, mosquitoes can also harm the environment by disrupting food chains and ecosystems. Despite efforts to control their populations through measures such as insecticide spraying and removing standing water sources, mosquitoes remain a persistent problem in many parts of the world.
 
@@ -18,10 +18,19 @@ Access the main_simulation_file.py to see the main code results and perform doct
 2) functions_file.py contains a class that has the design for the study and the experiments. This file will be imported into another file to run the experiments
 3) experiments_file.py contains the visualizations and results of the experiments. 
 
-# Design
+## Design
+
+#### Mosquito
+A random number of mosquito is assumed to exist in the room for every simulation. The random number is between 20 to 50 to replicate real world situations.
+These mosquitoes are spread through out the room and their initial position is also randomly determined. All the mosquitoes are randomly moved a distance (or not) such that they are not in the same position throughout the simulation run. The mosquitoes inhale the vapours that the vaporizer emits, and their position in the room determines how much vapours they have inhaled at any point of time. The mosquitoes have a threshold of inhalation of the vapours, after which they die due to having too much vapours in their system. 
+
+#### Setting
+The setting is that of an indoor room. The room is divided into sections along it's length. The vaporizer can be present in any of these sections and emits a steady flow of vapours into the air. The vapours diffuse through the air throughout the rooms. For the sake of simplicity, the room's sections have the same concentration in every point of the section. The vapours also loose their effectiveness after 30 mins of being in the air. 
 
 
-#Validation
+## Validation
+
+
 
 
 #Experiments
