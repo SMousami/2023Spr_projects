@@ -53,6 +53,16 @@ The adjusted concentrations in section a) will be normalized to a factor of 1/6 
 Taking this into account, our normalized emission rates for each section is :
   a) 8 sections > 100 (baseline)
   b) 6 sections > 100*6/8 = 75
+  
+  Size = 6, average survival rate = 
+  
+  ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
+  
+  Size = 8, avergate survival rate = 63%
+  
+  ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ad38e7ed-17ff-4ce9-abd6-aaae683f05e8)
+
+
 
 
 #### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
