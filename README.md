@@ -40,15 +40,19 @@ To validate the settings of the research above, having a mosquito threshold leve
 
 #### Hypothesis 1: The orientation of the room has an effect on the vaporizer. 
 
-Keeping everything else same, this experiment will involve looking at a square and rectangular orientation. 
-
-Assuming that the rectangular room has dimensions of 8 * 6 * 11 and the square has dimensions of 6 * 6 * 11 units. Since the experiment looks at section along the length, the experiment will run twice. In the first experiment run, the length will be taken as 8 and for the second, the length will be taken as 6. This means that the vaporizer will disperse the vapours along the length.
-
 Assumptions: 
-1) Fan speed will be kept at a minimum speed of 1 (0 is the lowest)
+1) Fan speed will be kept at a minimum speed of 0.3 (0 is the lowest and 0.5 is highest)
 2) There will be only one vaporizer in the corner most section of the room.
-3) The experiment will run for minute
-4) The diffusion rate of the vaporizer is 0.2 units per minute.  
+3) The experiment will run for 180 minute
+4) The diffusion rate of the vaporizer is 0.2 units per minute. 
+5) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. Assuming a 8 (L) * 6 (W)* 10 (H), we can consider two orientations: 
+  a) 8 sections where the vaporizer is place on the shorter side (6 width wall) 
+  b) 6 sections where the vaporizer is placed on the longer wall (8 length wall)
+In case a), the diffuser emits to a volume of 6 * 1 * 1 in each section (8 sections), in case b), the vaporizer emits to a volume of 8 * 1 * 1 in 6 sections. 
+The adjusted concentrations in section a) will be normalized to a factor of 1/6 and 1/8 for section b).
+Taking this into account, our normalized emission rates for each section is :
+  a) 8 sections > 100 (baseline)
+  b) 6 sections > 100*6/8 = 75
 
 
 #### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
