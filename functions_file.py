@@ -24,7 +24,7 @@ class VaporizerSimulation:
         self.size = size
         self.time_intervals = time
         self.vaporizer_locations = vaporizer_locations
-        self.emission_rate = 100
+        self.emission_rate = 75
         self.diffusion_rate = 0.20
         self.chemical_duration = 30
         self.fan_speed = fan_speed
@@ -53,7 +53,7 @@ class VaporizerSimulation:
         new_x = x + random.uniform(-max_distance1, max_distance1)
 
         if new_x >= self.size:
-            new_x = new_x - random.uniform(new_x - self.size, max_distance1)
+            new_x = new_x - random.uniform(new_x - self.size + 0.1, max_distance1)
 
         elif new_x < 0:
             new_x = new_x + random.uniform(-new_x, max_distance1)
@@ -123,6 +123,8 @@ class VaporizerSimulation:
         plt.figure(figsize=(12, 6))
         plt.hist(list_of_survival, bins=bins, alpha=0.5)
         plt.xticks(np.arange(min(list_of_survival), max(list_of_survival) + 0.05, 0.05))
+        plt.xlabel("The Survival Rate")
+        plt.ylabel("Frequency")
         plt.title('Avg Survival is ' + str(round((sum(list_of_survival) / runs), 2)))
         plt.show()
 
@@ -138,7 +140,9 @@ class VaporizerSimulation:
             plt.figure(figsize=(12, 6))
             plt.hist(fan_list[i], bins=bins, alpha=0.5)
             plt.xticks(np.arange(min(fan_list[i]), max(fan_list[i]) + 0.05, 0.05))
-            plt.title('Avg Survival is ' + str(round((sum(fan_list[i]) / runs), 2)))
+            plt.xlabel("The Survival Rate")
+            plt.ylabel("Frequency")
+            plt.title('Average Survival Rate is ' + str(round((sum(fan_list[i]) / runs), 2)))
             plt.show()
 
     def experiment_3(self,runs):

@@ -14,10 +14,11 @@ Purpose: To demonstrate the results
 
 import functions_file as sim1
 
-s = sim1.VaporizerSimulation(size=10,time=180,vaporizer_locations=[0],fan_speed=0.2)
-print(s)
+s = sim1.VaporizerSimulation(size=6, time=180, vaporizer_locations=[0], fan_speed=0.3)
 
-s.validation_of_design(500)
-s.experiment_3(10)
+
+s.validation_of_design(1000)
+
+
 
 

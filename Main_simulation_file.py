@@ -159,9 +159,9 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_statuses
 
 
-def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = None, emission_rate: float = 100, diffusion_rate: float = 0.30,
+def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = None, emission_rate: float = 100, diffusion_rate: float = 0.20,
                                     chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2, min_count: int = 20, max_count: int = 50,
-                                    ingestion_coefficient: float = 0.001, ingestion_threshold: int = 50) -> float:
+                                    ingestion_coefficient: float = 0.001, ingestion_threshold: int = 70) -> float:
     """
     :param number_of_sections: number of zones in room/size of the room (each zone is 1 unit measurement)
     :param time_intervals: number of intervals (in minutes) to simulate
