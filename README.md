@@ -48,7 +48,6 @@ To validate the design, the following study was used to understand what the resu
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
-To validate the settings of the research above, having a mosquito threshold level of 70 units made sense. However for the sake of further experiments and demonstrations of results, the mosquito inhalation threshold will be set at 100, as 70 threshold will lead to very high knockout rates when considering more than 1 vaporizer.
 
 ## Experiments
 
@@ -58,10 +57,11 @@ Assumptions:
 1) Fan speed will be kept at a minimum speed of 0 (0 is the lowest and 0.5 is highest)
 2) There will be only one vaporizer in the corner most section of the room.
 3) The experiment will run for 180 minute
-4) The diffusion rate of the vaporizer is 0.2 units per minute. 
-5) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. 
+4) The diffusion rate of the vaporizer is 0.2 units per minute.
+5) The mosquito inhalation threshold will be 70 
+6) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. 
 
-How assumption 5 will work:
+How assumption (6) will work:
 Assuming a 8 (L) * 6 (W)* 10 (H), we can consider two orientations: 
   a) 8 sections where the vaporizer is place on the shorter side (6 width wall) 
   b) 6 sections where the vaporizer is placed on the longer wall (8 length wall)
@@ -73,12 +73,11 @@ Taking this into account, our normalized emission rates for a) 8 sections is 100
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Room Size = 8, avergate survival rate = 67%
+  Room Size = 8, avergate survival rate = 64%
   
-  ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/409af999-1612-4565-9732-7e24f98fbcc8)
+ ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/dbdea518-9feb-48e3-b076-aac4f796f106)
 
-The survival rates are within 5% of each other's mean value for both the orientation. The histograms however have almost similar frequencies of survival rate. Based on this, I think the hypothesis that orientation matters is wrong.  
-
+Conclusion: There is a marked difference depending on which wall the vaporizer is kept on. This experiment shows that the orientation of the room matters. 
 
 
 #### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
