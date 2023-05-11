@@ -12,7 +12,6 @@ This project is a Monte Carlo simulation that studies how vaporizers are effecti
 
 import random
 import numpy as np
-import matplotlib.pyplot as plt
 import math
 
 
@@ -83,7 +82,7 @@ def generate_nearby_position(previous_position: int, room_length: int, max_dista
 
 
 def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, current_concentration: np.ndarray, mosquito_zone: int,
-                        ingested_concentration: float, mosquito_status: int):
+                        ingested_concentration: float, mosquitoes_status: int):
     """
     This function generates the concentration of chemicals absorbed by the mosquito and its current status as dead or alive.
     :param inhalation_rate: rate of ingestion of the liquid vapours in the air by the mosquito
@@ -91,14 +90,14 @@ def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, cur
     :param current_concentration: the current concentration at the position of the mosquito
     :param mosquito_zone: the array with the section the mosquitoes are present in
     :param ingested_concentration: the ingested concentration of the liquid vaporizer by the mosquito
-    :param mosquito_status: dead/alive status of mosquitoes with 0 representing death
+    :param mosquitoes_status: dead/alive status of mosquitoes with 0 representing death
     :return: the concentration and the mosquito status
-    >>> f, h = mosquito_inhalation(0.02, 100, [80,70,60], 2, 10, 1)
+    >>> f, h = mosquito_inhalation(0.02, 100, np.array([80,70,60]), 2, 10, 1)
     >>> f == 11.2
     True
     >>> h == 1
     True
-    >>> f2, h2 = mosquito_inhalation(0.02, 10, [80,70,60], 2, 10, 1)
+    >>> f2, h2 = mosquito_inhalation(0.02, 10, np.array([80,70,60]), 2, 10, 1)
     >>> h2 == 1
     False
     >>> f2 == 11.2
@@ -106,11 +105,11 @@ def mosquito_inhalation(inhalation_rate: float, inhalation_threshold: float, cur
     """
     if ingested_concentration < inhalation_threshold:
         ingested_concentration = ingested_concentration + current_concentration[mosquito_zone] * inhalation_rate
-        mosquito_status = 1
+        mosquitoes_status = 1
     else:
-        mosquito_status = 0
+        mosquitoes_status = 0
 
-    return ingested_concentration, mosquito_status
+    return ingested_concentration, mosquitoes_status
 
 
 def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mosquito_count):
@@ -120,12 +119,12 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     :param min_mosquito_count: The minimum mosquito count
     :param max_mosquito_count: The maximum mosquito count
     :return: the room concentration, numbers of mosquitoes in the room,location array, section array, concentration array and status array for mosquitoes
-    >>> g, i, k, l, m, n = starting_point_data_structure(5,20,50)
+    >>> g, z, k, l, m, n = starting_point_data_structure(5,20,50)
     >>> g
     array([0., 0., 0., 0., 0.], dtype=float32)
-    >>> i in range(20,50)
+    >>> z in range(20,50)
     True
-    >>> len(k) == i
+    >>> len(k) == z
     True
     >>> isinstance(k, np.ndarray)
     True
@@ -150,18 +149,19 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     mosquito_ingested_conc = np.zeros(shape=(mosquito_count_in_room,), dtype='float32')
 
     # creating an array to track the status of the mosquito
-    mosquito_status = np.ones(shape=(mosquito_count_in_room,), dtype='int')
+    mosquito_statuses = np.ones(shape=(mosquito_count_in_room,), dtype='int')
 
-    for i in range(0, mosquito_count_in_room):
-        mosquito_section[i], mosquito_locations[i] = generate_initial_mosquito_position(number_of_sections)
+    for v in range(0, mosquito_count_in_room):
+        mosquito_section[v], mosquito_locations[v] = generate_initial_mosquito_position(number_of_sections)
 
-    return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_status
+    return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_statuses
 
-def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int,vaporizer_locations: list = [0], emission_rate: float = 100, diffusion_rate=0.20,
-                                    chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2,min_count: int = 20, max_count: int = 50,
-                                    ingestion_coefficient: float = 0.001, ingestion_threshold: int = 100) -> float:
+
+def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = [0], emission_rate: float = 100, diffusion_rate: float = 0.30,
+                                    chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2, min_count: int = 20, max_count: int = 60,
+                                    ingestion_coefficient: float = 0.001, ingestion_threshold: int = 50) -> float:
     """
-    :param: number_of_sections: number of zones in room/size of the room (each zone is 1 unit measurement)
+    :param number_of_sections: number of zones in room/size of the room (each zone is 1 unit measurement)
     :param time_intervals: number of intervals (in minutes) to simulate
     :param vaporizer_locations: which zones have emitters
     :param emission_rate: how much vapor is released per time interval
@@ -181,24 +181,22 @@ def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int
     True
     """
     room_concentration, mosquito_counts, mosquito_location, mosquito_in_section, mosquito_concentrations, mosquito_status = starting_point_data_structure(number_of_sections, min_count, max_count)
-    for t in range(time_intervals):
+    for t2 in range(time_intervals):
         room_concentration[vaporizer_locations] += emission_rate
         for section in range(number_of_sections - 1):
             difference = room_concentration[section] - room_concentration[section + 1]
             flow = difference * (diffusion_rate + fan_speed)
             room_concentration[section] -= flow
             room_concentration[section + 1] += flow
-        if t > chemical_effective_duration:
+        if t2 > chemical_effective_duration:
             weights = room_concentration / sum(room_concentration)
             expiry = emission_rate * len(vaporizer_locations) * weights * random.uniform(0.9, 1.1)
             room_concentration = room_concentration - expiry
-        for i in range(0,mosquito_counts):
-            mosquito_concentrations[i], mosquito_status[i] = mosquito_inhalation(ingestion_coefficient, ingestion_threshold, room_concentration, mosquito_in_section[i],
-                                                                                 mosquito_concentrations[i], mosquito_status[i])
-            mosquito_in_section[i], mosquito_location[i] = generate_nearby_position(mosquito_location[i], number_of_sections, max_distance)
-    return (sum(mosquito_status) / len(mosquito_status))
-
-
+        for j in range(0,mosquito_counts):
+            mosquito_concentrations[j], mosquito_status[j] = mosquito_inhalation(ingestion_coefficient, ingestion_threshold, room_concentration, mosquito_in_section[j],
+                                                                                 mosquito_concentrations[j], mosquito_status[j])
+            mosquito_in_section[j], mosquito_location[j] = generate_nearby_position(mosquito_location[j], number_of_sections, max_distance)
+    return sum(mosquito_status) / len(mosquito_status)
 
 
 if __name__ == "__main__":
@@ -234,15 +232,17 @@ if __name__ == "__main__":
             vap_num = int(input("Please enter the number of vaporizers that will be placed in the room : "))
             if vap_num <= 0:
                 raise ValueError
+            elif vap_num > int(size)-1:
+                raise ValueError
             break
         except ValueError:
-            print("Input must be a positive, non-zero integer. Please try again.")
+            print("Input must be a positive, non-zero integer applicable to the room size. Please try again.")
 
     vap_list = []
     for i in range(int(vap_num)):
         while True:
             try:
-                vaporizer_loc = int(input("Please enter the location to place the vaporiser " + str(int(i) + 1) + " (Between 0 and " + str(int(size) - 1) + " ) : "))
+                vaporizer_loc = int(input("Please enter the location to place the vaporizer " + str(int(i) + 1) + " (Between 0 and " + str(int(size) - 1) + " ) : "))
                 if vaporizer_loc > int(size)-1:
                     raise ValueError
                 break
@@ -251,10 +251,10 @@ if __name__ == "__main__":
         vap_list.append(int(vaporizer_loc))
     while True:
         try:
-            fan_speed = float(input("Please enter the fan speed between 0 to 5 : "))
-            if fan_speed < 0:
+            fan_speed_no = float(input("Please enter the fan speed between 0 to 5 : "))
+            if fan_speed_no < 0:
                 raise ValueError
-            elif fan_speed >= 6:
+            elif fan_speed_no >= 6:
                 raise ValueError
             break
         except ValueError:
@@ -264,7 +264,7 @@ if __name__ == "__main__":
     print("...........Loading the results for 1 run.............")
     print("=====================================================")
     print("                                                                    ")
-    sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,fan_speed=float(fan_speed/10))
+    sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list,fan_speed=float(fan_speed_no/10))
     print("Survival rate of mosquitoes at the end of the time period is " + str(round(sim, 2)))
     print("                                                                    ")
     selection = input("Do you want the average results and statistics over a specified amount of runs (y/n) ? : ")
@@ -282,7 +282,7 @@ if __name__ == "__main__":
 
         results = []
         for i in range(int(no_runs)):
-            sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list, fan_speed=float(fan_speed/10))
+            sim = diffusion_and_mosquito_position(number_of_sections=int(size), time_intervals=int(t), vaporizer_locations=vap_list, fan_speed=float(fan_speed_no/10))
             results.append(round(sim, 2))
 
         runtime = time.time() - t0
@@ -296,7 +296,3 @@ if __name__ == "__main__":
         print("                                                                    ")
         print("The simulation runtime for " + str(no_runs) + " iterations was " + str(round(runtime, 2)) + " seconds")
         print("                                                                    ")
-
-
-
-
