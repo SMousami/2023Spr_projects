@@ -62,9 +62,12 @@ Assumptions:
 6) We are placing vaporizers on one of the walls of the room. In this experiment, we will consider volume into account and try to factor it into diffusion values to work with the current structure. 
 
 How assumption (6) will work:
+
 Assuming a 8 (L) * 6 (W)* 10 (H), we can consider two orientations: 
+
   a) 8 sections where the vaporizer is place on the shorter side (6 width wall) 
   b) 6 sections where the vaporizer is placed on the longer wall (8 length wall)
+  
 In case a), the diffuser emits to a volume of 6 * 1 * 1 in each section (8 sections), in case b), the vaporizer emits to a volume of 8 * 1 * 1 in 6 sections. 
 The adjusted concentrations in section a) will be normalized to a factor of 1/6 and 1/8 for section b).
 Taking this into account, our normalized emission rates for a) 8 sections is 100 (baseline) and b) 6 sections is 100*6/8 = 75
@@ -114,7 +117,7 @@ Fan Speed = 0.5, average survival rate = 38%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/29616961-f57e-412b-9163-80f000ae0a2a)
 
-Conclusion: Fan speed decreases the survival rate at first, but then normalizes as the fan speed reaches the top speed. 
+Conclusion: Fan speed decreases the survival rate at first, however as the fan speed approaches maximum speed, the drop off gets smaller for the survival rate. 
 
 #### Hypothesis 3: The best vaporizer position would be when it is kept at the either ends of the room. 
 
