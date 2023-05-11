@@ -112,21 +112,22 @@ class VaporizerSimulation:
 
         return self.survival_rate
 
-    def experiment(self, runs):
+    def draw_histogram(self, incoming_list, simu_runs):
+        bins = np.arange(min(incoming_list), max(incoming_list) + 0.05, 0.05)
+        plt.figure(figsize=(12, 6))
+        plt.hist(incoming_list, bins=bins, alpha=0.5)
+        plt.xticks(np.arange(min(incoming_list), max(incoming_list) + 0.05, 0.05))
+        plt.xlabel("The Survival Rate")
+        plt.ylabel("Frequency")
+        plt.title('Average Survival Rate is ' + str(round((sum(incoming_list) / simu_runs), 2)))
+        plt.show()
 
+    def experiment(self, runs):
         list_of_survival = []
         for i in range(runs):
             self.simulation()
             list_of_survival.append(self.survival_rate)
-
-        bins = np.arange(min(list_of_survival), max(list_of_survival) + 0.05, 0.05)
-        plt.figure(figsize=(12, 6))
-        plt.hist(list_of_survival, bins=bins, alpha=0.5)
-        plt.xticks(np.arange(min(list_of_survival), max(list_of_survival) + 0.05, 0.05))
-        plt.xlabel("The Survival Rate")
-        plt.ylabel("Frequency")
-        plt.title('Avg Survival is ' + str(round((sum(list_of_survival) / runs), 2)))
-        plt.show()
+        self.draw_histogram(incoming_list=list_of_survival, simu_runs = runs)
 
     def experiment_2(self, runs):
         fan_list = {}
@@ -136,14 +137,7 @@ class VaporizerSimulation:
                 self.simulation()
                 fan_list[speed].append(self.survival_rate)
         for i in fan_list:
-            bins = np.arange(min(fan_list[i]), max(fan_list[i]) + 0.05, 0.05)
-            plt.figure(figsize=(12, 6))
-            plt.hist(fan_list[i], bins=bins, alpha=0.5)
-            plt.xticks(np.arange(min(fan_list[i]), max(fan_list[i]) + 0.05, 0.05))
-            plt.xlabel("The Survival Rate")
-            plt.ylabel("Frequency")
-            plt.title('Average Survival Rate is ' + str(round((sum(fan_list[i]) / runs), 2)))
-            plt.show()
+            self.draw_histogram(incoming_list=fan_list[i],simu_runs = runs)
 
     def experiment_3(self,runs):
         vap_list = {}
@@ -163,7 +157,6 @@ class VaporizerSimulation:
         sorted_dict = dict(sorted(vap_list.items(), key=lambda x: sum(x[1])))
         iteration = 0
         for i in sorted_dict:
-
             bins = np.arange(min(sorted_dict[i]), max(sorted_dict[i]) + 0.05, 0.05)
 
             plt.figure(figsize=(12, 6))
