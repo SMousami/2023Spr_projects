@@ -44,14 +44,16 @@ Variables
 
 ## Validation
 
-To validate the design, the following study was used to understand what the results should be in a room of dimensions 6.8 * 3.4 * 2.7. The study had gotten a knockout rate of 56.7% with an interal of 7.3%.(1) The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. Note: The below figure shows the survival rate, which is 1 - knockout rate. Hence the average knockout rate should be around 57 % knockout rate. 
+To validate the design, the following study was used to understand what the results should be in a room of dimensions 6.8 * 3.4 * 2.7. The study had gotten a knockout rate of 56.7% with an interal of 7.3%.(1) The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room at the corner of the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. 
+
+Note: The below figure shows the survival rate, which is 1 - knockout rate. Hence the average knockout rate should be around 57 %. 
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
 
 ## Experiments
 
-#### Hypothesis 1: The orientation of the room has an effect on the vaporizer. 
+#### Hypothesis 1: The orientation of the room has an effect on the vaporizer diffusion 
 
 Assumptions: 
 1) Fan speed will be kept at a minimum speed of 0 (0 is the lowest and 0.5 is highest)
@@ -72,11 +74,11 @@ In case a), the diffuser emits to a volume of 6 * 1 * 1 in each section (8 secti
 The adjusted concentrations in section a) will be normalized to a factor of 1/6 and 1/8 for section b).
 Taking this into account, our normalized emission rates for a) 8 sections is 100 (baseline) and b) 6 sections is 100*6/8 = 75
   
-  Room Size = 6, average survival rate = 72%
+Room Size = 6, average survival rate = 72%
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Room Size = 8, average survival rate = 68%
+Room Size = 8, average survival rate = 68%
  
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ceadace0-312d-413e-9834-f00166d7893e)
 
@@ -88,10 +90,8 @@ Conclusion: The difference between the mean values is within 5% and the histogra
 Assumptions: 
 1) The length of the room is 10 units
 2) The fan speed will be vaired for each experiment run
-3) There will be two different experiments, one with just one vaporizer, another with two vaporizers. 
+3) There will be two vaporizers at either end of the room
 4) The time interval for the simulations will be 180 min
-
-##### Scene 1: Two vaporizers at either end of the room
 
 Fan speed = 0, average survival rate = 46%
 
