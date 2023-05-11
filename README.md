@@ -76,11 +76,11 @@ Taking this into account, our normalized emission rates for a) 8 sections is 100
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Room Size = 8, avergate survival rate = 64%
-  
- ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/dbdea518-9feb-48e3-b076-aac4f796f106)
+  Room Size = 8, avergate survival rate = 68%
+ 
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ceadace0-312d-413e-9834-f00166d7893e)
 
-Conclusion: There is a marked difference depending on which wall the vaporizer is kept on. This experiment shows that the orientation of the room matters. 
+Conclusion: The difference between the mean values is within 5% and the histograms show a similar frequency trend for the rest of the values. Based on this results, the difference can be termed as negligent. 
 
 
 #### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
@@ -93,7 +93,7 @@ Assumptions:
 
 ##### Scene 1: Two vaporizers at either end of the room
 
-Fan speed = 0, averge survival rate =
+Fan speed = 0, averge survival rate = 46%
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/67d969b1-8265-4a1f-8f13-0de1a6b1e5c7)
 
@@ -146,4 +146,3 @@ Conclusion: Positions closer to each other and one position in the middle seems 
 
 1) Validation: Hun Jung, Huijun An, Minjin Lee, Jieun Lee, Jun-Hyung Tak, Comparative Efficacy of Commercial Liquid and Mat-Type Electric Vaporizer Insecticides Against Asian Tiger Mosquito (Diptera: Culicidae), Journal of Medical Entomology, Volume 58, Issue 6, November 2021, Pages 2274–2283, https://doi-org.proxy2.library.illinois.edu/10.1093/jme/tjab087
 2) https://www.who.int/docs/default-source/searo/india/health-topic-pdf/vbd-fact-sheets.pdf?sfvrsn=c1908b04_2
-3) 
