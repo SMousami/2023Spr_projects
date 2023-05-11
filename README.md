@@ -30,7 +30,7 @@ The setting is that of an indoor room. The room is divided into sections along i
 
 ## Validation
 
-To validate the design, the following study was used to understand what the results should be in a room of dimensions 6.8 * 3.4 * 2.7. The study had gotten a knockout rate of 56.7% with an interal of 7.3%. The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. Note: The below figure shows the survival rate, which is 1 - knockout rate. Hence the average knockout rate should be around 57 % knockout rate. 
+To validate the design, the following study was used to understand what the results should be in a room of dimensions 6.8 * 3.4 * 2.7. The study had gotten a knockout rate of 56.7% with an interal of 7.3%.(1) The Monte carlo simulation gives similar results when the room length is 7 units, the fan flow is really low and there is only one vaporizer in the room. When this simulation is ran 1000 times, it gives a statistically convergent plot shown below. Note: The below figure shows the survival rate, which is 1 - knockout rate. Hence the average knockout rate should be around 57 % knockout rate. 
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
@@ -68,3 +68,9 @@ Any experiment with a monte carlo simulation has three phases
 1) Designing a simulation
 2) Validating the simulation
 3) Experiments and predictions
+
+## References
+
+1) Validation: Hun Jung, Huijun An, Minjin Lee, Jieun Lee, Jun-Hyung Tak, Comparative Efficacy of Commercial Liquid and Mat-Type Electric Vaporizer Insecticides Against Asian Tiger Mosquito (Diptera: Culicidae), Journal of Medical Entomology, Volume 58, Issue 6, November 2021, Pages 2274–2283, https://doi-org.proxy2.library.illinois.edu/10.1093/jme/tjab087
+2) https://www.who.int/docs/default-source/searo/india/health-topic-pdf/vbd-fact-sheets.pdf?sfvrsn=c1908b04_2
+3) 
