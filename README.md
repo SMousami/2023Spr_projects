@@ -101,8 +101,23 @@ Fan Speed = 0.5, average survival rate = 38%
 
 Conclusion: Fan speed decreases the survival rate at first, but then normalizes as the fan speed reaches the top speed. 
 
-#### Hypothesis 3: 
-#Assumptions
+#### Hypothesis 3: The best vaporizer position would be when it is kept at the either ends of the room. 
+
+Assumptions
+1) The size of the room is 10
+2) The time interval of the experiment would be 180 minutes
+3) fan speed is kept at the middle
+
+The top best vaporizer positions are:
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/60444230-4c7e-4140-bf0d-7bf81b1aaf41)
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/1f9d15b7-15df-464a-8709-c5d648260700)
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/70cfc574-51b2-4291-a990-3084ca9a682f)
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/eb7f3d3f-1e1d-495e-8bf8-0d7b07b18e49)
+
 
 #Hypothesis
 
