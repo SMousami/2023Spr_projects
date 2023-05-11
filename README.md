@@ -58,9 +58,9 @@ Taking this into account, our normalized emission rates for each section is :
   
   ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/a0d83a28-652d-4903-b8b7-b282312d0fee)
   
-  Size = 8, avergate survival rate = 63%
+  Size = 8, avergate survival rate = 67%
   
-  ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ad38e7ed-17ff-4ce9-abd6-aaae683f05e8)
+  ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/409af999-1612-4565-9732-7e24f98fbcc8)
 
 
 
