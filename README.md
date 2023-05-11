@@ -34,6 +34,8 @@ To validate the design, the following study was used to understand what the resu
 
 ![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/9d26c8b1-3310-4f1c-8b9b-65041abc098b)
 
+To validate the settings of the research above, having a mosquito threshold level of 70 units made sense. However for the sake of further experiments and demonstrations of results, the mosquito inhalation threshold will be set at 100, as 70 threshold is too low to conduct meaningful experiments before all the mosquitoes die.
+
 ## Experiments
 
 #### Hypothesis 1: The orientation of the room has an effect on the vaporizer. 
@@ -52,18 +54,52 @@ Assumptions:
 #### Hypothesis 2: The presence of a ceiling fan in the room will improve vaporizer's effectiveness in killing mosquitoes.
 
 Assumptions: 
-1) The length of the room is 8 units
+1) The length of the room is 10 units
 2) The fan speed will be vaired for each experiment run
-3) There will be only one vaporizer present at the corner section of the room. 
+3) There will be two different experiments, one with just one vaporizer, another with two vaporizers. 
 4) The time interval for the simulations will be 180 min
 
+##### Scene 1: Two vaporizers at either end of the room
 
-When fan speed is the lowest i.e. speed = 0 and time spent = 3 hours
+Fan speed = 0, averge survival rate =
 
-![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/01e5ab0e-f210-4035-af4b-e4914008df0a)
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/384a612e-1a16-4487-9ca0-bda4c7c4f936)
 
+Fan Speed = 0.1, averge survival rate =
 
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/e210d40d-de92-45c5-becf-422dc7e1a189)
 
+Fan Speed = 0.2, average Survival rate = 42%
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/46acd5be-385a-49b1-b2fc-958ab5d1df60)
+
+Fan Speed = 0.3, averge survival rate = 40%
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/ccae01e8-163b-4350-a617-6442c656782d)
+
+Fan speed = 0.4, average survival rate = 38%
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/fad73874-c0fb-4849-84a2-04af1faad689)
+
+Fan Speed = 0.5, average survival rate = 39%
+
+##### Scene 2: With one vaporizer
+
+Fan Speed = 0,average survival rate = 97%
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/7603da07-c3f3-4575-86ea-2473cebaaaa6)
+
+Fan Speed = 0.1, average survival rate = 100
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/bf52b6a8-31a3-4e1e-9d48-5170b35f8ac4)
+
+Fan Speed = 0.2, average survival rate = 100
+
+![image](https://github.com/SMousami/2023Spr_projects/assets/40067673/2b4a137c-72e6-4b9f-9a30-005c533c8c95)
+
+##### Conclusion: A room with two vaporizers show a decreasing rate of survival as the fan speed increases, proving the hypothesis right. 
+
+#### Hypothesis 3: 
 #Assumptions
 
 #Hypothesis
