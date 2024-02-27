@@ -1,6 +1,4 @@
 """
-IS 597 PR Spring 2023
-Project
 Title: Monte Carlo simulation of the effectiveness of vaporizers in killing mosquitoes
 Submitted by: Mousami Shinde
 Date: May 2023
@@ -159,7 +157,7 @@ def starting_point_data_structure(number_of_sections, min_mosquito_count, max_mo
     return room_conc, mosquito_count_in_room, mosquito_locations, mosquito_section, mosquito_ingested_conc, mosquito_statuses
 
 
-# Some part of the code below was developed by Professor Weible
+#Main function
 def diffusion_and_mosquito_position(number_of_sections: int, time_intervals: int, vaporizer_locations: list = None, emission_rate: float = 100,
                                     diffusion_rate: float = 0.20, chemical_effective_duration: int = 30, fan_speed: float = 0.0, max_distance: int = 2,
                                     min_count: int = 20, max_count: int = 50, ingestion_coefficient: float = 0.001, ingestion_threshold: int = 70) -> float:
