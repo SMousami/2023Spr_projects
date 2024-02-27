@@ -1,6 +1,6 @@
 """
 Title: Monte Carlo simulation of the effectiveness of vaporizers in killing mosquitoes
-Submitted by: Mousami Shinde
+By: Mousami Shinde
 Date: May 2023
 IDE: Pycharm 2022.3.1 Professional Edition
 Python version 3.10.11
